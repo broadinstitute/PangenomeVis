@@ -1,6 +1,7 @@
 # PangenomeVis
 An interactive, JavaScript-based browser for microbial pangenome graphs 
 
+![alt text](https://drive.google.com/drive/u/0/folders/1KC_Esypo-PDX0Gb9onoVdXCtPzg4ikyb)
 
 Variant discovery is largely conducted by comparing sample genomes to a single canonical reference genome under the assumption that the sample of interest differs only slightly from its reference.  However, many pathogens diversify their genomes so quickly that the sample and reference may differ greatly.  When these differences are sufficiently large, existing algorithms fail to adequately align sample sequence data to the reference, and variation underlying virulence factors (e.g. drug resistance, immune evasion) may go undetected.
 
