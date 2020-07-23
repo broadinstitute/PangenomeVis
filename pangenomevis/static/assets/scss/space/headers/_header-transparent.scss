@@ -1,0 +1,58 @@
+/*------------------------------------
+  Transparent Header
+------------------------------------*/
+
+.u-header--bg-transparent {
+  // Above Large Devices
+  @include media-breakpoint-up(lg) {
+	  &:not(.js-header-fix-moment):not(.u-scrolled) {
+      // Section
+      .u-header__section {
+				background-color: transparent;
+        border-color: transparent;
+      }
+    }
+
+    // Bordered Navbar
+    &.u-header--bordered:not(.bg-white):not(.js-header-fix-moment):not(.u-scrolled) {
+      .u-header__section,
+      .u-header__navbar-brand,
+      .u-header__nav-item-user,
+      .u-header__navbar-v-divider, {
+        border-color: $header-divider-color-light;
+      }
+    }
+
+    // Brand
+    .u-header__navbar-brand {
+      &-on-scroll {
+        display: none;
+      }
+    }
+
+    &.js-header-fix-moment,
+    &.u-scrolled {
+      .u-header__navbar-brand {
+        &-default {
+          display: none;
+        }
+
+        &-on-scroll {
+          display: inline-block;
+        }
+      }
+    }
+  }
+}
+
+.u-header--bg-transparent {
+  // Below Large Devices
+  @include media-breakpoint-down(md) {
+    // Brand
+    .u-header__navbar-brand {
+      &-default {
+        display: none;
+      }
+    }
+  }
+}

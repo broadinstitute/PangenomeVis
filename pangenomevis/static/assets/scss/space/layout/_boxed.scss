@@ -1,0 +1,26 @@
+/*------------------------------------
+  Boxed Layout
+------------------------------------*/
+
+.boxed-layout {
+	width: $boxed-layout-width;
+  margin-right: auto;
+  margin-left: auto;
+	background-color: $boxed-layout-bg;
+
+	@include media-breakpoint-up(lg) {
+	  padding-right: $boxed-layout-padding-x;
+	  padding-left: $boxed-layout-padding-x;
+	}
+
+	&__inner {
+		box-shadow: $boxed-layout-inner-box-shadow;
+	}
+
+	&__section {
+		@include media-breakpoint-between(lg, lg) {
+		  padding-right: $boxed-layout-section-padding-x;
+		  padding-left: $boxed-layout-section-padding-x;
+		}
+	}
+}

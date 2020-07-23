@@ -1,0 +1,109 @@
+/*------------------------------------
+  Video Player
+------------------------------------*/
+
+.u-video-player {
+  position: relative;
+  background-color: $video-player-bg;
+
+  &__preview {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    object-fit: cover;
+    transition: $video-player-preview-transition;
+
+    .u-video-player__played & {
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+
+  &__btn {
+    z-index: 3;
+    transition: $video-player-btn-transition;
+
+    .u-video-player__played & {
+      animation: videoPlayerButton $transition-timing-md $transition-function forwards;
+      pointer-events: none;
+    }
+
+    &:hover,
+    &:focus {
+      .u-video-player__icon {
+        &::before {
+          transform: scale(1.2);
+        }
+      }
+    }
+  }
+
+  &__icon {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    width: $video-player-icon-width;
+    height: $video-player-icon-height;
+    font-size: $video-player-icon-font-size;
+
+    &--sm {
+      width: $video-player-icon-width-sm;
+      height: $video-player-icon-height-sm;
+      font-size: $video-player-icon-font-size-lg;
+    }
+
+    &::before {
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+      content: "";
+      background-color: $video-player-icon-pseuod-bg-color;
+      @include border-radius($video-player-icon-pseudo-border-radius);
+      transition: $video-player-icon-pseudo-transition;
+    }
+
+    &-inner {
+      color: $primary;
+      @include content-centered;
+      margin-left: 2px;
+    }
+
+    // Small Devices
+    @include media-breakpoint-down(sm) {
+      width: $video-player-icon-responsive-sm-width;
+      height: $video-player-icon-responsive-sm-height;
+    }
+  }
+}
+
+.embed-responsive-invisible {
+  opacity: 0;
+  transition: $transition-timing $transition-function;
+
+  .u-video-player__played & {
+    opacity: 1;
+  }
+}
+
+/* Positions */
+.u-video-player {
+  &__centered {
+    @include content-centered;
+  }
+}
+
+@keyframes videoPlayerButton {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.3);
+  }
+}

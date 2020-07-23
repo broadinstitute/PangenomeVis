@@ -1,0 +1,21 @@
+/*------------------------------------
+  Text Colors
+------------------------------------*/
+
+.text-white-70 {
+	color: rgba($white, .7);
+
+	&[href]:hover {
+		color: $white;
+	}
+}
+
+.text-gray-700 {
+  color: $gray-700;
+}
+
+.text-secondary {
+  &[href]:hover {
+    color: $link-color !important;
+  }
+}

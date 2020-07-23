@@ -1,0 +1,69 @@
+/*------------------------------------
+  Badges
+------------------------------------*/
+
+[class*="badge-"] {
+  z-index: $badge-z-index;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  line-height: $badge-line-height;
+}
+
+.badge-xs {
+  width: $badge-width;
+  height: $badge-height;
+  font-size: $badge-font-size-xs;
+}
+
+.badge-sm {
+  width: $badge-width-sm;
+  height: $badge-height-sm;
+  font-size: $badge-font-size-sm;
+
+  &.badge-icon {
+    line-height: $badge-line-height-icon-sm;
+  }
+}
+
+.badge-pos {
+  position: absolute;
+}
+
+/* Positions */
+.badge-pos:not([class*="--top-left"]):not([class*="--bottom-left"]):not([class*="--bottom-right"]) {
+  top: 0;
+  right: 0;
+  transform: translate(50%, -50%);
+}
+
+.badge-pos {
+  &--top-left {
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+  }
+
+  &--bottom-left {
+    bottom: 0;
+    left: 0;
+    transform: translate(-50%, 50%);
+  }
+
+  &--bottom-right {
+    bottom: 0;
+    right: 0;
+    transform: translate(50%, 50%);
+  }
+
+  &--bottom-right-minus-1 {
+    bottom: -.25rem;
+    right: -.25rem;
+  }
+}
+
+// Colours
+.badge-primary-soft {
+  color: $primary;
+  background-color: rgba($primary, .1);
+}

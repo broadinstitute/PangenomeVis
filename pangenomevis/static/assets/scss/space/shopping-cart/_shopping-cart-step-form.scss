@@ -1,0 +1,79 @@
+/*------------------------------------
+  Shopping Cart - Step Form
+------------------------------------*/
+
+.u-shopping-cart-step-form {
+  margin-left: 0;
+  text-align: center;
+
+  &__item {
+    width: 100%;
+    border-bottom: 2px solid $gray-300;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 1rem;
+    margin-right: -.25rem;
+    margin-left: -.25rem;
+
+    &:not(:last-child) {
+      margin-right: 0;
+    }
+
+    // Small Devices
+    @include media-breakpoint-up(sm) {
+      width: 33.33333%;
+    }
+
+     &.active {
+      border-bottom-color: $primary;
+
+      .u-shopping-cart-step-form__title,
+      .u-shopping-cart-step-form__subtitle {
+        color: $primary;
+      }
+    }
+  }
+
+  &__title {
+    display: block;
+    font-size: 1.25rem;
+    color: $dark;
+  }
+
+  &__subtitle {
+    display: block;
+    font-size: .875rem;
+    color: $gray-600;
+  }
+}
+
+/* Toggler */
+.u-shopping-cart-step-form {
+  &__toggler {
+    display: block;
+    width: 100%;
+    text-align: center;
+    color: $paragraph-color;
+    border: 1px solid $gray-300;
+    @include border-radius($border-radius);
+    padding: 1.5rem;
+    min-width: 13.75rem;
+    margin-right: 1rem;
+    transition: $transition-timing;
+
+    &.active,
+    &:hover {
+      color: $primary;
+      border-color: $primary;
+    }
+
+    &-icon {
+      font-size: 1.5rem;
+    }
+
+    &-img {
+      width: 5rem;
+      height: auto;
+    }
+  }
+}

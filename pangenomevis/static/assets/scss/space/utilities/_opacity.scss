@@ -1,0 +1,23 @@
+/*------------------------------------
+  Opacity
+------------------------------------*/
+
+.opacity {
+  opacity: .5 !important;
+
+  &-lg {
+    opacity: .7 !important;
+  }
+
+  &-0 {
+    opacity: 0 !important;
+  }
+
+  &-default {
+    opacity: 1 !important;
+
+    &--hover:hover {
+      opacity: 1 !important;
+    }
+  }
+}

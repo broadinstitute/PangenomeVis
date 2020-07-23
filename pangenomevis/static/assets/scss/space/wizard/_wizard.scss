@@ -1,0 +1,74 @@
+/*------------------------------------
+  Wizard
+------------------------------------*/
+
+.wizard {
+  &-steps {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 3.25rem;
+      left: 5rem;
+      right: 5rem;
+      height: 2px;
+      background-color: $border-color;
+      z-index: 1;
+    }
+
+    &-item {
+      text-align: center;
+      z-index: 2;
+      font: {
+        weight: bold;
+        size: 1.25rem;
+      }
+      color: $text-muted;
+    }
+    &-item.active {
+      color: $gray-900;
+    }
+
+    &-num {
+      position: relative;
+      width: 3.5rem;
+      height: 3.5rem;
+      border-radius: 50%;
+      margin: {
+        left: auto;
+        right: auto;
+        bottom: -1rem;
+      }
+      line-height: .7;
+      background-color: $white;
+
+      &-wrapper {
+        display: inline-block;
+        background-color: $white;
+        padding: 1.5rem;
+      }
+
+      &-inner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+    &-item.active &-num {
+      background-color: $primary;
+
+      &-inner {
+        color: $white;
+      }
+    }
+
+    // Title
+    &-title {
+      font-weight: normal;
+    }
+  }
+}

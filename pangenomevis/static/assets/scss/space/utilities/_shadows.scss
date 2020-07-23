@@ -1,0 +1,40 @@
+/*------------------------------------
+  Shadows
+------------------------------------*/
+
+.shadow {
+  &-xs {
+    box-shadow: $box-shadow-xs !important;
+  }
+
+  // v2
+  &-2 {
+    box-shadow: $box-shadow-2 !important;
+
+    &-xs {
+      box-shadow: $box-shadow-2-xs !important;
+    }
+    &-sm {
+      box-shadow: $box-shadow-2-sm !important;
+    }
+    &-lg {
+      box-shadow: $box-shadow-2-lg !important;
+    }
+
+    // Hover
+    &-sm-hover,
+    &-hover,
+    &-lg-hover {
+      transition: all $transition-timing-sm $transition-function;
+    }
+    &-sm-hover:hover {
+      box-shadow: $box-shadow-2-sm !important;
+    }
+    &-hover:hover {
+      box-shadow: $box-shadow-2 !important;
+    }
+    &-lg-hover:hover {
+      box-shadow: $box-shadow-2-lg !important;
+    }
+  }
+}

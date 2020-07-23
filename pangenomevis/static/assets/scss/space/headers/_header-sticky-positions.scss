@@ -1,0 +1,110 @@
+/*------------------------------------
+  Sticky Positions
+------------------------------------*/
+
+.u-header--sticky {
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    @include media-breakpoint-up($breakpoint, $grid-breakpoints) {
+      &-top#{$infix},
+      &-bottom#{$infix} {
+        position: fixed;
+      }
+
+      &-top#{$infix} {
+        bottom: auto;
+        top: 0;
+      }
+
+      &-bottom#{$infix} {
+        top: auto;
+        bottom: 0;
+
+        .u-header__section {
+          border-top: 1px solid $header-divider;
+          border-bottom: 0;
+        }
+
+        .u-unfold,
+        .u-header__search,
+        .u-header__sub-menu {
+          top: auto;
+          bottom: 100%;
+        }
+
+        .u-unfold {
+          margin-bottom: 7px;
+        }
+
+        .u-header__navbar-nav .u-header__sub-menu {
+          @include border-top-radius($header-sub-menu-top-border-radius);
+          @include border-bottom-radius(0);
+          box-shadow: $header-absolute-bottom-submenu-box-shadow;
+        }
+
+        .fadeInUp {
+          animation-name: stickyFadeInUp;
+        }
+      }
+    }
+  }
+}
+
+// Long list of links, can lead to a bug, since the header can not calculate the height when.
+// For this reason, max-height is given to avoid header disappearing issues on collapse.
+.u-header--sticky__inner {
+  max-height: $header-sticky-height;
+
+  &.mCS_destroyed {
+    position: static !important;
+  }
+}
+
+[class*="u-header--sticky"] {
+  .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+    margin: 3.75rem 1.5rem;
+  }
+
+  .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+    height: 70%;
+  }
+
+  .mCS-minimal-dark.mCSB_scrollTools .mCSB_draggerRail {
+    background-color: transparent !important;
+  }
+}
+
+/* Disable box-shadow on mobile device */
+.u-header--sticky {
+  &-bottom {
+    &:not(.js-header-fix-moment) {
+      [class*="navbar-expand"] {
+        .u-header__navbar-nav {
+          .u-header__sub-menu {
+            box-shadow: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+.u-header--sticky-top-sm,
+.u-header--sticky-top-md,
+.u-header--sticky-bottom-sm,
+.u-header--sticky-bottom-md {
+  .navbar-expand-lg {
+    .u-header__navbar-nav {
+      .u-header__sub-menu {
+        box-shadow: none !important;
+      }
+    }
+  }
+}
+
+@keyframes stickyFadeInUp {
+  from {
+    transform: translate3d(0, -25%, 0);
+  }
+}

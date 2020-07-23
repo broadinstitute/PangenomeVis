@@ -1,0 +1,41 @@
+/*------------------------------------
+  Clients
+------------------------------------*/
+
+.u-clients {
+  width: $clients-width;
+  margin: {
+    left: auto;
+    right: auto;
+  }
+
+  &--lg {
+    width: $clients-width-lg;
+  }
+
+  &-list {
+    .slick-slide {
+      div {
+        line-height: .7;
+      }
+
+      &:last-child {
+        .u-clients-item {
+          border-right: 0;
+        }
+      }
+
+      div:last-child {
+        .u-clients-item {
+          border-bottom: 0;
+        }
+      }
+    }
+  }
+
+  &-item {
+    border-width: 0 1px 1px 0;
+    border-color: $gray-300;
+    border-style: solid;
+  }
+}

@@ -1,0 +1,56 @@
+/*------------------------------------
+  Media Player
+------------------------------------*/
+
+.u-media-player {
+  color: $media-player-color;
+  font-weight: $font-weight-normal;
+  transition: $media-player-transition;
+
+  &__icon {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    width: $media-player-icon-width;
+    height: $media-player-icon-height;
+    font-size: $media-player-icon-font-size;
+
+    &::before {
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+      content: "";
+      background-color: $media-player-icon-pseudo-bg-color;
+      @include border-radius($media-player-icon-pseudo-border-radius);
+      transition: $media-player-icon-pseudo-transition;
+    }
+
+    &-inner {
+      color: $media-player-icon-inner-color;
+      @include content-centered;
+      margin-left: .125rem;
+    }
+
+    &--box-shadow {
+      &::before {
+        box-shadow: $media-player-icon-box-shadow;
+      }
+    }
+  }
+
+  &:hover {
+    .u-media-player__icon {
+      &::before {
+        transform: scale(1.1);
+      }
+    }
+  }
+}
+
+/* Extra Large Size */
+.u-media-player__icon--xl {
+  width:  $media-player-icon-xl-width;
+  height: $media-player-icon-xl-height;
+  font-size: $media-player-icon-xl-font-size;
+}

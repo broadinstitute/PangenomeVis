@@ -1,0 +1,19 @@
+/*------------------------------------
+  Modal Window
+------------------------------------*/
+
+.u-modal-window {
+  position: relative;
+  display: none;
+  max-height: $modal-window-max-height;
+  background-color: $modal-window-bg;
+  margin-left: $modal-window-margin-offsetX;
+	margin-right: $modal-window-margin-offsetX;
+
+  &__close {
+  	position: absolute;
+    top: .5rem;
+    right: .5rem;
+  	z-index: 1;
+  }
+}

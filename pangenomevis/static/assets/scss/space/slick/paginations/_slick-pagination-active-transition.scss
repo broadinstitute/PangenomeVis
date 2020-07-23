@@ -1,0 +1,16 @@
+/*------------------------------------
+  Slick Pagination - Active Transition
+------------------------------------*/
+
+.u-slick--active-transition {
+  .slick-slide {
+    margin-top: 1.125rem;
+    margin-bottom: 1.125rem;
+    transition: $transition-timing;
+    transform: scale(0.9);
+  }
+
+  .slick-current {
+    transform: scale(1.1);
+  }
+}

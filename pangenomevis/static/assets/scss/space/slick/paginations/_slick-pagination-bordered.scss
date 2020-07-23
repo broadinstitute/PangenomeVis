@@ -1,0 +1,64 @@
+/*------------------------------------
+  Slick Pagination Bordered
+------------------------------------*/
+
+.u-slick__pagination-bordered {
+  padding-left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+
+  li {
+    display: flex;
+    pointer-events: all;
+    margin: .5rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    cursor: pointer;
+
+    span {
+      display: inline-block;
+      width: 4rem;
+      height: .25rem;
+      box-sizing: border-box;
+      background-color: $gray-600;
+      transition: $transition-timing;
+    }
+
+    &:hover {
+      span {
+        background-color: rgba($primary, .4);
+      }
+    }
+
+    &.slick-active {
+      span {
+        background-color: $primary;
+      }
+    }
+  }
+}
+
+/* White Option */
+.u-slick__pagination-bordered {
+  &.u-slick__pagination-bordered--white {
+    li {
+      span {
+        background-color: rgba($white, .5);
+      }
+
+      &:hover {
+        span {
+          background-color: rgba($white, .7);
+        }
+      }
+
+      &.slick-active {
+        span {
+          background-color: $white;
+        }
+      }
+    }
+  }
+}

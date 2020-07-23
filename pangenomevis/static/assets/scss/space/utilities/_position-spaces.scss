@@ -1,0 +1,114 @@
+/*------------------------------------
+  Position Spaces
+------------------------------------*/
+
+.position-absolute-top-right-0 {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.position-absolute-bottom-0 {
+	position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.position-absolute-bottom-left-0 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.position-absolute-bottom-right-0 {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.bottom-0 {
+  bottom: 0;
+}
+
+.left-0 {
+  left: 0;
+}
+
+.right-0 {
+  right: 0;
+}
+
+.top-n1 {
+  top: -.25rem;
+}
+
+.left-3 {
+  left: 1rem;
+}
+
+.right-3 {
+  right: 1rem;
+}
+
+@include media-breakpoint-up(sm) {
+  .left-sm-7 {
+    left: 3rem;
+  }
+  .right-sm-7 {
+    right: 3rem;
+  }
+}
+
+// Small Devices
+@include media-breakpoint-up(sm) {
+  .position-absolute-bottom-0--sm {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+}
+
+// Medium Devices
+@include media-breakpoint-up(md) {
+  .position-absolute-top-left-0--md {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .position-absolute-top-right-0--md {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  .position-absolute-bottom-left-0--md {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+}
+
+// Large Devices
+@include media-breakpoint-up(lg) {
+	.position-absolute-top-left-0--lg {
+		position: absolute;
+    top: 0;
+    left: 0;
+	}
+
+	.position-absolute-top-right-0--lg {
+		position: absolute;
+    top: 0;
+    right: 0;
+	}
+
+  .position-absolute-bottom-0--lg {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+}

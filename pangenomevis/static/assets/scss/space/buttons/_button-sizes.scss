@@ -1,0 +1,35 @@
+/*------------------------------------
+  Button Sizes
+------------------------------------*/
+
+// Extra Small
+.btn-xs {
+  font-size: $btn-font-size-xs;
+  padding: $input-btn-padding-y-xs $input-btn-padding-x-xs;
+}
+
+// Small
+.btn-sm {
+  @include border-radius($border-radius);
+}
+
+/* Icons */
+.btn-icon {
+	position: relative;
+	line-height: 0;
+  font-size: $btn-icon-font-size;
+  width: $btn-width;
+  height: $btn-height;
+  padding: 0;
+
+  &__inner {
+  	@include content-centered;
+  }
+
+	&.btn-xs {
+  	font-size: $btn-icon-font-size-xs;
+		width: $btn-width-xs;
+		height: $btn-height-xs;
+  	padding: 0;
+	}
+}

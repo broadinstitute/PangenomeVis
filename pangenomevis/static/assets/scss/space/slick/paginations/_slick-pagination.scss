@@ -1,0 +1,56 @@
+/*------------------------------------
+  Slick Pagination
+------------------------------------*/
+
+.u-slick__pagination {
+  padding-left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+
+  li {
+    display: flex;
+    pointer-events: all;
+    margin: 0 .25rem;
+    cursor: pointer;
+
+	  span {
+	  	display: inline-block;
+	  	width: $slick-pagination-width;
+	  	height: $slick-pagination-height;
+      box-sizing: border-box;
+	    background-color: $slick-pagination-bg-color;
+	    border: $slick-pagination-border-width solid transparent;
+	    @include border-radius($slick-pagination-border-radius);
+	    transform: scale(.6);
+	    transition: $slick-pagination-transition;
+	  }
+
+    &.slick-active {
+      span {
+        background-color: $slick-pagination-active-bg-color;
+        border-color: $slick-pagination-active-border-color;
+        transform: scale(.9);
+      }
+    }
+  }
+}
+
+/* White Option */
+.u-slick__pagination {
+  &.u-slick__pagination--white {
+    li {
+      span {
+        background-color: $slick-pagination-white-bg-color;
+      }
+
+      &.slick-active {
+        span {
+          background-color: $slick-pagination-white-active-bg-color;
+          border-color: $slick-pagination-white-active-border-color;
+        }
+      }
+    }
+  }
+}

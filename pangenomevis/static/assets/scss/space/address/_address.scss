@@ -1,0 +1,17 @@
+/*------------------------------------
+  Alert
+------------------------------------*/
+
+.address {
+  &-pin {
+    position: relative;
+    padding-left: 2.6rem;
+    border-bottom: 1px solid $light;
+
+    &__pin {
+      position: absolute;
+      top: 3px;
+      left: 0;
+    }
+  }
+}

@@ -1,0 +1,23 @@
+//
+// Badges
+//
+
+// Style Mixin Badge
+@mixin badge($hs-color, $hs-background) {
+  color: color-yiq($hs-color);
+  background: $hs-background;
+}
+
+// Bootstrap Style Mixin Badge
+@mixin badge-variant($hs-background) {
+  color: color-yiq($hs-background);
+  background-color: $hs-background;
+
+  &[href] {
+    &:hover,
+    &:focus {
+      color: color-yiq($hs-background);
+      background-color: darken($hs-background, 10%);
+    }
+  }
+}

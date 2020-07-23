@@ -1,0 +1,39 @@
+/*------------------------------------
+  Slick Paging v1
+------------------------------------*/
+
+.u-slick__paging-v1 {
+	position: absolute;
+	bottom: 32px;
+	right: 0;
+	padding-left: .9375rem;
+	padding-right: .9375rem;
+
+	.u-paging {
+		&__current {
+			color: $white;
+			font-size: 3.875rem;
+			line-height: 1;
+		}
+
+		&__divider {
+			position: relative;
+			margin-right: .5rem;
+			margin-left: .25rem;
+
+			&::before {
+				position: absolute;
+				top: 0;
+				left: 0;
+				color: rgba($white, .7);
+				font-size: .875rem;
+				content: "\002f";
+			}
+		}
+
+		&__total {
+			font-size: 1.5rem;
+			color: rgba($white, .7);
+		}
+	}
+}

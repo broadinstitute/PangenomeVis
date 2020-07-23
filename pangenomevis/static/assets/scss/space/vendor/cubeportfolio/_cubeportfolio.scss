@@ -1,0 +1,95 @@
+/*------------------------------------
+  Cubeportfolio
+------------------------------------*/
+
+.u-cubeportfolio {
+	.u-cubeportfolio__item {
+		font-size: $cubeportfolio-item-font-size;
+		text-transform: capitalize;
+		background-color: $cubeportfolio-item-bg-color;
+		border: none;
+		margin: 0;
+		padding-left: $cubeportfolio-item-padding-x;
+		padding-right: $cubeportfolio-item-padding-x;
+		margin-bottom: 1rem;
+
+		&:hover {
+			color: $cubeportfolio-item-hover-color;
+		}
+
+		&.cbp-filter-item-active {
+			color: $cubeportfolio-item-active-color;
+			background-color: $cubeportfolio-item-active-bg-color;
+			border: $cubeportfolio-item-active-border-color;
+		}
+	}
+
+	// Load more disabled class
+	.cbp-l-loadMore-stop {
+		pointer-events: none;
+	}
+
+	// Zoom overlay effect
+	.cbp-caption-zoom .cbp-caption-activeWrap {
+		background-color: rgba($white, .7);
+	}
+}
+
+/* Arrow */
+.u-cubeportfolio {
+	.cbp-nav-controls {
+		position: static;
+	}
+
+	.cbp-nav-prev,
+	.cbp-nav-next {
+		@include content-centered(false, true);
+		z-index: 1;
+		line-height: 0;
+		display: inline-block;
+		color: $cubeportfolio-arrow-color;
+		background-color: $cubeportfolio-arrow-bg-color;
+		width: $cubeportfolio-arrow-width;
+		height: $cubeportfolio-arrow-height;
+		font-size: $cubeportfolio-arrow-font-size;
+		@include border-radius($cubeportfolio-arrow-border-radius);
+		cursor: pointer;
+		transition: $cubeportfolio-arrow-transition;
+
+		&:hover {
+			color: $cubeportfolio-arrow-hover-color;
+			background-color: $cubeportfolio-arrow-hover-bg-color;
+		}
+	}
+
+	.cbp-nav-prev {
+		left: .5rem;
+	}
+
+	.cbp-nav-next {
+		right: .5rem;
+	}
+}
+
+/* Pagination */
+.u-cubeportfolio {
+	.cbp-nav-pagination {
+    bottom: -3rem;
+	}
+
+	.cbp-nav-pagination-item {
+		width: $cubeportfolio-pagination-width;
+	  height: $cubeportfolio-pagination-height;
+		background-color: $cubeportfolio-pagination-bg-color;
+    border: $cubeportfolio-pagination-border-width solid transparent;
+    @include border-radius($cubeportfolio-pagination-border-radius);
+    transform: scale(.6);
+    transition: $cubeportfolio-pagination-transition;
+	}
+
+	.cbp-nav-pagination-active {
+		background-color: transparent;
+    border-color: $cubeportfolio-pagination-border-color;
+  	transform: scale(.9);
+	}
+}

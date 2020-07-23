@@ -1,0 +1,33 @@
+/*------------------------------------
+  Unfold (Drop Down) - Language
+------------------------------------*/
+
+.u-unfold--language {
+	min-width: 18.5rem;
+	padding: 0;
+	margin-bottom: 3.5rem;
+
+	&-btn {
+		border: 1px solid rgba($white, .1);
+
+		&:hover,
+		&:focus {
+			color: $white !important;
+		}
+	}
+
+	&__link {
+		display: block;
+		background-color: $gray-100;
+	}
+
+	&-icon-pointer {
+		.active & {
+			transform: rotate(-180deg);
+		}
+	}
+
+	@include media-breakpoint-up(sm) {
+		min-width: 22.5rem;
+	}
+}

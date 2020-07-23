@@ -1,0 +1,19 @@
+/*------------------------------------
+  Lift
+------------------------------------*/
+
+[class*="lift"] {
+  transition: transform $transition-timing-sm $transition-function;
+}
+
+.lift {
+  &:focus,
+  &:hover {
+    transform: translate3d(0, -3px, 0)
+  }
+
+  &-lg:focus,
+  &-lg:hover {
+    transform: translate3d(0, -6px, 0)
+  }
+}

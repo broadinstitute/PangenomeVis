@@ -1,0 +1,81 @@
+/*------------------------------------
+  Default Styles
+------------------------------------*/
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -moz-font-feature-settings: "liga", "kern";
+  text-rendering: optimizelegibility;
+}
+
+main {
+  position: relative;
+}
+
+p {
+  color: $paragraph-color;
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-weight: $font-weight-normal;
+
+  > a {
+    color: $headings-link-color;
+    font-weight: $font-weight-normal;
+
+    &:hover {
+      color: $link-hover-color;
+    }
+  }
+
+  &.text-white > a {
+    color: $headings-white-link-color;
+  }
+}
+
+h6,
+.h6 {
+  font-weight: $font-weight-medium;
+}
+
+figure {
+  margin-bottom: 0;
+}
+
+object {
+  margin-bottom: -.3125rem;
+}
+
+.fa, .fas {
+  font-weight: 900;
+}
+
+/*------------------------------------
+  Highlight Color
+------------------------------------*/
+
+::-moz-selection {
+  color: $white;
+  background-color: $primary;
+}
+
+::selection {
+  color: $white;
+  background-color: $primary;
+}
+
+.bg-primary ::-moz-selection {
+  color: $primary;
+  background-color: $white;
+}
+
+.bg-primary ::selection {
+  color: $primary;
+  background-color: $white;
+}
+
+.IE11 .ie-d-block {
+  display: block !important;
+}

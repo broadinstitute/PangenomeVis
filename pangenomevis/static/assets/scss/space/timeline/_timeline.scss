@@ -1,0 +1,134 @@
+/*------------------------------------
+  Timeline
+------------------------------------*/
+
+.u-timeline {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+
+  &__item {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-right: -.9375rem;
+    margin-left: -.9375rem;
+
+    @include media-breakpoint-up(lg) {
+      flex-wrap: nowrap;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+
+    &:nth-child(odd) {
+      @include media-breakpoint-up(lg) {
+        .u-timeline__content {
+          order: 2;
+          padding-left: 3rem;
+        }
+
+        .u-timeline__info {
+          order: 1;
+        }
+
+        .u-timeline__spacer {
+          order: 3;
+        }
+      }
+    }
+
+    &:nth-child(even) {
+      @include media-breakpoint-up(lg) {
+        .u-timeline__content {
+          order: 2;
+          padding-left: 3rem;
+        }
+
+        .u-timeline__info {
+          order: 3;
+          justify-content: flex-end;
+        }
+
+        .u-timeline__spacer {
+          order: 1;
+        }
+      }
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    top: 0;
+    left: .9375rem;
+
+    @include media-breakpoint-up(lg) {
+      left: 0;
+    }
+  }
+
+  &__content,
+  &__info {
+    width: calc(100% - 4rem);
+  }
+
+  &__info,
+  &__spacer {
+    display: block;
+
+    @include media-breakpoint-up(lg) {
+      width: 33%;
+    }
+  }
+
+  &__info,
+  &__content,
+  &__spacer {
+    padding-right: .9375rem;
+    padding-left: .9375rem;
+
+    @include media-breakpoint-down(md) {
+      padding-left: 4rem;
+    }
+  }
+
+  &__info,
+  &__content {
+    position: relative;
+
+    &::before {
+      position: absolute;
+      top: .5rem;
+      bottom: 0;
+      left: 1.875rem;
+      height: 100%;
+      border-left: 3px dashed $gray-300;
+      content: "";
+
+      @include media-breakpoint-up(lg) {
+        left: .9375rem;
+      }
+    }
+  }
+
+  &__content {
+    padding-bottom: 2rem;
+
+    @include media-breakpoint-up(lg) {
+      width: 50%;
+      padding-bottom: 4rem;
+    }
+  }
+
+  &__info {
+    padding-bottom: 2rem;
+
+    @include media-breakpoint-up(lg) {
+      padding-bottom: 0;
+
+      &::before {
+        display: none;
+      }
+    }
+  }
+}

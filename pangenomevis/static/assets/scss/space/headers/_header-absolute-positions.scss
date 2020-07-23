@@ -1,0 +1,131 @@
+/*------------------------------------
+  Absolute Positions
+------------------------------------*/
+
+.u-header--abs {
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    @include media-breakpoint-up($breakpoint, $grid-breakpoints) {
+      &-top,
+      &-bottom,
+      &-top-2nd-screen {
+        &#{$infix} {
+          position: absolute;
+        }
+      }
+
+      &-top#{$infix} {
+        top: 0;
+        bottom: auto;
+      }
+
+      &-top-2nd-screen#{$infix} {
+        &:not(.js-header-fix-moment) {
+          top: 100%;
+          bottom: auto;
+        }
+
+        &[data-header-fix-effect] {
+          transition: none;
+        }
+      }
+
+      &-bottom#{$infix}:not(.js-header-fix-moment) {
+        top: auto;
+        bottom: 0;
+      }
+
+      &-top-2nd-screen,
+      &-bottom {
+        &#{$infix}:not(.js-header-fix-moment) {
+          .u-header__section {
+            border-top: 1px solid $header-divider;
+          }
+
+          .u-unfold,
+          .u-header__search,
+          .u-header__sub-menu {
+            top: auto;
+            bottom: 100%;
+
+            .u-header__sub-menu {
+              bottom: 0;
+            }
+          }
+
+          .u-unfold {
+            margin-bottom: 0;
+          }
+
+          [class*="navbar-expand"] .u-header__navbar-nav .u-header__sub-menu {
+            box-shadow: $header-absolute-bottom-submenu-box-shadow;
+          }
+
+          .fadeInUp {
+            animation-name: absoluteFadeInUp;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Long list of links, can lead to a bug, since the header can not calculate the height when.
+// For this reason, max-height is given to avoid header disappearing issues on collapse.
+.u-header--abs__inner {
+  max-height: $header-absolute-height;
+
+  &.mCS_destroyed {
+    position: static !important;
+  }
+}
+
+[class*="u-header--abs"] {
+  .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+    margin: 3.75rem 1.5rem;
+  }
+
+  .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+    height: 70%;
+  }
+
+  .mCS-minimal-dark.mCSB_scrollTools .mCSB_draggerRail {
+    background-color: transparent !important;
+  }
+}
+
+/* Disable box-shadow on mobile device */
+.u-header--abs {
+  &-top-2nd-screen,
+  &-bottom {
+    &:not(.js-header-fix-moment) {
+      [class*="navbar-expand"] {
+        .u-header__navbar-nav {
+          .u-header__sub-menu {
+            box-shadow: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+.u-header--abs-top-2nd-screen-sm,
+.u-header--abs-top-2nd-screen-md,
+.u-header--abs-bottom-sm,
+.u-header--abs-bottom-md {
+  .navbar-expand-lg {
+    .u-header__navbar-nav {
+      .u-header__sub-menu {
+        box-shadow: none !important;
+      }
+    }
+  }
+}
+
+@keyframes absoluteFadeInUp {
+  from {
+    transform: translate3d(0, -25%, 0);
+  }
+}

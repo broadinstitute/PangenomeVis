@@ -1,0 +1,16 @@
+/*------------------------------------
+  Slick Pagination - Active Border
+------------------------------------*/
+
+.u-slick--pagination-active-border {
+  .u-slick--pagination-active-border__item {
+    cursor: pointer;
+    border: 1px solid $gray-300;
+  }
+
+  .slick-current {
+    .u-slick--pagination-active-border__item {
+      border-color: $primary;
+    }
+  }
+}

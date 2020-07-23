@@ -1,0 +1,21 @@
+/*------------------------------------
+  Background Gradients
+------------------------------------*/
+
+.gradient {
+  &-half-primary-v1 {
+    @include gradient-x($hs-start-color: $gradient-purple, $hs-end-color: $gradient-primary, $deg: 25deg);
+  }
+
+  &-half-purple-v1 {
+    @include gradient-x($hs-start-color: $gradient-purple, $hs-end-color: $gradient-blue, $hs-start-percent: 45%, $deg: 35deg);
+  }
+
+  &-light-v1 {
+    @include gradient-x($hs-start-color: $light, $hs-end-color: $white, $hs-end-percent: 50%, $deg: 155deg);
+  }
+
+  &-light-v2 {
+    @include gradient-x($hs-start-color: $gray-100, $hs-end-color: $gradient-overlay-transparent, $hs-start-percent: 0%, $hs-end-percent: 25%, $deg: 0deg);
+  }
+}

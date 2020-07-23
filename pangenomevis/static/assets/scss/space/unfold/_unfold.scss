@@ -1,0 +1,68 @@
+/*------------------------------------
+  Unfold (Drop Down)
+------------------------------------*/
+
+/* Disable content revealing on page load */
+.u-unfold {
+  &[aria-labelledby] {
+    opacity: 0;
+  }
+
+  &[aria-labelledby][role="tabpanel"] {
+    opacity: 1;
+  }
+
+  &[aria-labelledby].u-unfold--css-animation,
+  &[aria-labelledby].u-unfold--jquery-slide {
+    opacity: 1;
+  }
+
+  &.u-unfold--css-animation.u-unfold--hidden {
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.u-unfold {
+  position: absolute;
+  z-index: $unfold-z-index;
+  min-width: $unfold-min-width;
+  background-color: $unfold-bg;
+  @include border-radius($unfold-border-radius);
+  box-shadow: $unfold-box-shadow;
+  padding: $unfold-padding;
+  border: none;
+  margin-bottom: 0;
+
+  &-wrapper {
+    color: $unfold-wrapper-color;
+    font-size: $unfold-wrapper-font-size;
+
+    &:hover {
+      color: $unfold-wrapper-hover-color;
+    }
+
+    &--light {
+      color: $unfold-wrapper-light-color;
+
+      &:hover {
+        color: $white;
+      }
+    }
+  }
+
+  &__icon {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    width: $unfold-icon-width;
+    margin-right: .5rem;
+
+    &-pointer {
+      font-size: $unfold-icon-pointer-font-size;
+      vertical-align: middle;
+      margin-left: .25rem;
+    }
+  }
+}

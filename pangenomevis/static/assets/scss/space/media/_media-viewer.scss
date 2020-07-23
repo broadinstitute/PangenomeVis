@@ -1,0 +1,55 @@
+/*------------------------------------
+  Media Viewer
+------------------------------------*/
+
+.u-media-viewer {
+	position: relative;
+	display: block;
+	overflow: hidden;
+
+	&:hover {
+		.u-media-viewer {
+			&__img {
+				transform: scale(1.25);
+			}
+
+			&__icon {
+				opacity: 1;
+			}
+		}
+	}
+
+	&__img {
+		transition: $transition-timing-md;
+	}
+
+	&__container {
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		padding: 1rem;
+	}
+
+	&__icon {
+		display: inline-block;
+	  vertical-align: middle;
+	  text-align: center;
+	  color: $media-viewer-icon-color;
+	  background-color: $media-viewer-icon-bg-color;
+	  width: $media-viewer-icon-width;
+		height: $media-viewer-icon-height;
+		font-size: $media-viewer-icon-font-size;
+	  @include border-radius($media-viewer-icon-border-radius);
+		opacity: 0;
+		transition: $media-viewer-icon-transition;
+
+	  &:hover,
+	  &:focus {
+	  	color: $media-viewer-icon-hover-color;
+	  }
+
+		&-inner {
+  		@include content-centered;
+  	}
+	}
+}

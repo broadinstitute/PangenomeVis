@@ -1,0 +1,28 @@
+/*------------------------------------
+  Sidebar Panel
+------------------------------------*/
+
+/* Link */
+.u-sidebar {
+  &--panel__link {
+    color: $paragraph-color;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+}
+
+/* Footer */
+.u-sidebar {
+	&--panel__footer-offset {
+  	height: 100%;
+  	box-sizing: border-box;
+  	padding-bottom: 9.5rem;
+  }
+
+  &__footer--panel {
+  	background: $white;
+  	border-top: 1px solid $gray-300;
+  }
+}

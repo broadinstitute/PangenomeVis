@@ -1,0 +1,21 @@
+/*------------------------------------
+  Link Colors
+------------------------------------*/
+
+.link {
+  &-dark {
+    color: $dark;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+
+  &-secondary {
+    color: $secondary;
+
+    &:hover {
+      color: $link-color;
+    }
+  }
+}
