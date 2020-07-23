@@ -94,5 +94,5 @@ do
     done
 
     mccortex31 join -f -m 4G -o ${asm}/all.joined.ctx ${asm}/*.inferedges.ctx
-    mccortex31 view -k ${asm}/all.joined.ctx > ${asm}/all.joined.txt
+    mccortex31 view -i -k ${asm}/all.joined.ctx > ${asm}/all.joined.txt
 done
