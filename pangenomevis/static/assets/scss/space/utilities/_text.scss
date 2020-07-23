@@ -1,0 +1,71 @@
+/*------------------------------------
+  Font Size
+------------------------------------*/
+
+.font-size {
+  &-base {
+    font-size: 1rem !important;
+  }
+
+  &-inherit {
+    font-size: inherit !important;
+  }
+
+  &-13 {
+    font-size: .8125rem;
+  }
+
+  &-14 {
+    font-size: .875rem;
+  }
+
+  &-18 {
+    font-size: 1.125rem;
+  }
+
+  &-28 {
+    font-size: 1.75rem;
+  }
+
+  &-32 {
+    font-size: 2rem;
+  }
+
+  // Medium Devices
+  @include media-breakpoint-down(md) {
+    &-48--md-down {
+      font-size: 3rem;
+    }
+  }
+}
+
+/*------------------------------------
+  Font Weight
+------------------------------------*/
+
+.font-weight-medium {
+  font-weight: $font-weight-medium !important;
+}
+
+/*------------------------------------
+  Font Style
+------------------------------------*/
+.font-normal {
+  font-style: normal;
+}
+
+/*------------------------------------
+  Font Family
+------------------------------------*/
+
+.font-family-charm {
+  font-family: $font-family-charm !important;
+}
+
+// Line height
+.text-lh-xs {
+  line-height: 1.2;
+}
+.text-lh-sm {
+  line-height: 1.5;
+}

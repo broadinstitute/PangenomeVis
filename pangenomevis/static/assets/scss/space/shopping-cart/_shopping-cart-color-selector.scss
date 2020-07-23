@@ -1,0 +1,25 @@
+/*------------------------------------
+  Shopping Cart - Color Selector
+------------------------------------*/
+
+.u-shopping-cart-color-selector {
+  display: inline-block;
+  cursor: pointer;
+  width: 1.75rem;
+  height: 1.75rem;
+  padding: .25rem;
+  border: 3px solid $white;
+  @include border-radius($border-radius-rounded);
+
+  &.active {
+    box-shadow: 0 0 0 2px $gray-150;
+
+    &:hover {
+      box-shadow: 0 0 0 2px $gray-150;
+    }
+  }
+
+  &:hover {
+    box-shadow: 0 0 0 2px $gray-300;
+  }
+}

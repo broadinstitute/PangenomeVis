@@ -1,0 +1,26 @@
+/*------------------------------------
+  Form Sizes
+------------------------------------*/
+
+// Default Size
+.form {
+	.form__text {
+		min-width: 3rem;
+		font-size: ($font-size-base * .8125);
+	}
+}
+
+// Small Size
+.form--sm {
+	.form__text {
+		min-width: 2.6875rem;
+	}
+}
+
+// Large Size
+.form--lg {
+	.form__text {
+		font-size: ($font-size-base * 1.125);
+		min-width: 3.875rem;
+	}
+}

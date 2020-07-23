@@ -1,0 +1,129 @@
+/*------------------------------------
+  Background Overlay Gradients
+------------------------------------*/
+
+[class*="gradient-overlay"],
+[class*="gradient-overlay-half"],
+[class*="gradient-overlay-quarter"] {
+	position: relative;
+	z-index: 1;
+
+	&::before,
+	&::after {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		z-index: -1;
+		width: 100%;
+		height: 100%;
+		content: "";
+	}
+}
+
+.gradient-overlay-half-dark-video-v1 {
+	&::before {
+		z-index: 2;
+		background-color: rgba($gradient-overlay-dark, .95);
+	}
+}
+
+.gradient-overlay-half-white-v1 {
+	&::before {
+		@include gradient-x($hs-start-color: rgba($gradient-overlay-white, .99), $hs-end-color: $gradient-overlay-transparent, $hs-start-percent: 30%, $hs-end-percent: 60%, $deg: 60deg);
+	}
+}
+.gradient-overlay-half-white-v2 {
+	&::before {
+		@include gradient-x($hs-start-color: rgba($gradient-overlay-white, .99), $hs-end-color: $gradient-overlay-transparent, $hs-start-percent: 28%, $hs-end-percent: 50%, $deg: 60deg);
+	}
+	&::after {
+		@include gradient-x($hs-start-color: rgba($gradient-overlay-white, .99), $hs-end-color: $gradient-overlay-transparent, $hs-start-percent: 3%, $hs-end-percent: 50%, $deg: 0deg);
+	}
+}
+
+.gradient-overlay-quarter-light-v1 {
+	&::before {
+		@include gradient-x($hs-start-color: $gray-100, $hs-end-color: $gradient-overlay-transparent, $hs-start-percent: 0%, $hs-end-percent: 25%, $deg: 0deg);
+	}
+}
+
+.gradient-overlay-half-dark-v1 {
+	&::before {
+		@include gradient-x($hs-start-color: rgba($gradient-overlay-dark, .5), $hs-end-color: $gradient-overlay-transparent-dark, $deg: 30deg);
+	}
+}
+
+.gradient-overlay-half-dark-v2 {
+	&::before {
+		@include gradient-x($hs-start-color: rgba($gradient-overlay-dark, .6), $hs-end-color: $gradient-overlay-transparent-dark, $deg: 0deg);
+	}
+}
+.gradient-overlay-half-dark-v2-2 {
+	&::before {
+		@include gradient-x($hs-start-color: rgba($gradient-overlay-dark, .89), $hs-end-color: rgba($gradient-overlay-dark, .37), $deg: 0deg);
+	}
+}
+.gradient-overlay-half-dark-v2-3 {
+	&::before {
+		@include gradient-x($hs-start-color: rgba($gradient-overlay-dark, 1), $hs-end-color: $gradient-overlay-transparent-dark, $deg: 0deg);
+	}
+}
+
+.gradient-overlay-half-dark-v3 {
+	&::before {
+		@include gradient-x($hs-start-color: $gradient-overlay-transparent-dark, $hs-end-color: rgba($gradient-overlay-dark, .5), $deg: 0deg);
+	}
+}
+.gradient-overlay-half-dark-v4 {
+	&::before {
+		@include gradient-x($hs-start-color: rgba($gradient-overlay-dark, .9), $hs-end-color: $gradient-overlay-dark, $hs-start-percent: 10%, $hs-end-percent: 50%, $deg: 150deg);
+	}
+}
+
+.gradient-overlay-dark-v1 {
+	&::before {
+		@include gradient-x($hs-start-color: rgba($gradient-overlay-dark, 1), $hs-end-color: $gradient-overlay-transparent-dark, $hs-start-percent: 0%, $hs-end-percent: 150%, $deg: 0deg);
+	}
+}
+
+.gradient-overlay-half-black-v1 {
+	&::before {
+		@include gradient-x($hs-start-color: #000, $hs-end-color: $gradient-overlay-transparent-dark, $deg: 45deg);
+	}
+	&::after {
+		@include gradient-x($hs-start-color: #000, $hs-end-color: $gradient-overlay-transparent-dark, $hs-start-percent: 0%, $hs-end-percent: 25%, $deg: 270deg);
+	}
+}
+.gradient-overlay-half-black-v1-2 {
+	&::before {
+		@include gradient-x($hs-start-color: #000, $hs-end-color: $gradient-overlay-transparent-dark, $hs-start-percent: 0%, $hs-end-percent: 25%, $deg: 90deg);
+	}
+	&::after {
+		@include gradient-x($hs-start-color: #000, $hs-end-color: $gradient-overlay-transparent-dark, $deg: 270deg);
+	}
+}
+.gradient-overlay-half-black-v2 {
+	&::before {
+		@include gradient-x($hs-start-color: rgba(#000, .9), $hs-end-color: $gradient-overlay-transparent-dark, $hs-start-percent: 0%, $hs-end-percent: 50%, $deg: 0deg);
+	}
+}
+
+.gradient-overlay-half-primary-v1 {
+	&::before {
+		@include gradient-x($hs-start-color: rgba($gradient-overlay-purple, .95), $hs-end-color: rgba($gradient-overlay-primary, .95), $deg: 30deg);
+	}
+}
+
+.gradient-overlay-half-purple-v1 {
+	&::before {
+		@include gradient-x($hs-start-color: rgba($gradient-overlay-purple, .35), $hs-end-color: $gradient-overlay-purple, $hs-start-percent: 10%, $hs-end-percent: 70%, $deg: 180deg);
+	}
+}
+
+.gradient-overlay-half-purple-v2 {
+	&::before {
+		@include gradient-x($hs-start-color: rgba($gradient-overlay-purple, .9), $hs-end-color: $gradient-overlay-purple, $hs-start-percent: 10%, $hs-end-percent: 50%, $deg: 150deg);
+	}
+}

@@ -1,0 +1,42 @@
+/*------------------------------------
+  Header White Nav Links
+------------------------------------*/
+
+.u-header--white-nav-links {
+  // Above Large Devices
+  @include media-breakpoint-up(lg) {
+    .u-header__nav-link,
+    [class*="btn-text-"] {
+      transition: $transition-timing;
+    }
+
+    .u-header__nav-link-icon {
+      transition: 0s;
+    }
+
+    &:not(.bg-white):not(.js-header-fix-moment):not(.u-scrolled) {
+      // Nav Item
+			.u-header__nav-item {
+			  &:hover {
+			    .u-header__nav-link {
+						color: $white;
+			    }
+			  }
+			}
+
+      .u-header__nav-link,
+      .u-header__nav-item-user-name,
+      [class*="btn-text-"] {
+        color: rgba($white, .9);
+
+        &:hover {
+          color: $white;
+        }
+      }
+
+			.u-header__nav-item-user {
+        background-color: rgba($white, .1);
+      }
+  	}
+  }
+}

@@ -1,0 +1,29 @@
+/*------------------------------------
+  Focus States
+------------------------------------*/
+
+.form {
+  transition: all $input-btn-transition-timing $input-btn-transition-function;
+
+  &.u-focus-state {
+    box-shadow: $form-focus-box-shadow;
+  }
+
+  &:focus,
+  &.u-focus-state .form__text,
+  &.u-focus-state .form__input,
+  &.u-focus-state *:focus {
+    border-color: $form-focus-border-color;
+  }
+
+  &.u-focus-state .form__text {
+    color: $form-focus-addon-color;
+  }
+}
+
+/* White Border */
+.form--white-brd {
+  &.u-focus-state .form__input {
+    border-color: $white;
+  }
+}

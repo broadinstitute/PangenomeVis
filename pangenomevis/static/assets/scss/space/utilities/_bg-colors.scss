@@ -1,0 +1,21 @@
+/*------------------------------------
+  Background Colors
+------------------------------------*/
+
+.bg-gray-100 {
+	background-color: $gray-100;
+}
+
+.bg-black-opacity-0_3 {
+  background-color: rgba($black, .3);
+}
+
+.bg-purple-opacity-0_07 {
+  background-color: rgba($purple, .07);
+}
+
+@include media-breakpoint-up(lg) {
+  .bg-lg-transparent {
+    background-color: transparent !important;
+  }
+}

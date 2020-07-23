@@ -1,0 +1,14 @@
+/*------------------------------------
+  Vertical Progress Bar
+------------------------------------*/
+
+.progress-vertical {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-end;
+  height: $progress-vertical-height;
+
+  &__inner {
+    @include border-radius($border-radius-pill);
+  }
+}

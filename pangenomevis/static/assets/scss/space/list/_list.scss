@@ -1,0 +1,292 @@
+/*------------------------------------
+  List
+------------------------------------*/
+
+[class*="list-dot"],
+[class*="list-dash"],
+[class*="list-check"],
+[class*="list-arrow"],
+[class*="list-chevron"] {
+  padding-left: 0;
+  list-style: none;
+
+  & > li {
+    position: relative;
+
+    &::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+}
+
+.list {
+  // Dot
+  &-dot,
+  &-dot-primary,
+  &-dot-secondary {
+    & > li {
+      padding-left: .75rem;
+
+      &::before {
+        content: "•";
+      }
+    }
+  }
+  &-dot-primary {
+    & > li::before {
+      color: $primary;
+    }
+  }
+  &-dot-secondary {
+    & > li::before {
+      color: $secondary;
+    }
+  }
+
+  // Dash
+  &-dash,
+  &-dash-primary,
+  &-dash-secondary {
+    & > li {
+      padding-left: 1.25rem;
+
+      &::before {
+        content: "—";
+      }
+    }
+  }
+  &-dash-primary {
+    & > li::before {
+      color: $primary;
+    }
+  }
+  &-dash-secondary {
+    & > li::before {
+      color: $secondary;
+    }
+  }
+
+  // Check
+  &-check,
+  &-check-primary,
+  &-check-secondary {
+    & > li {
+      padding-left: 1.25rem;
+
+      &::before {
+        content: "\f00c";
+        top: 6px;
+        font: {
+          family: "Font Awesome 5 Free";
+          size: .625rem;
+          weight: 600;
+        }
+      }
+    }
+  }
+  &-check-primary {
+    & > li::before {
+      color: $primary;
+    }
+  }
+  &-check-secondary {
+    & > li::before {
+      color: $secondary;
+    }
+  }
+
+  // Check in Circle
+  &-check-incircle,
+  &-check-incircle-primary,
+  &-check-incircle-soft-primary,
+  &-check-incircle-soft-secondary {
+    & > li {
+      padding-left: 2.25rem;
+
+      &::before {
+        content: "\f00c";
+        top: 2px;
+        font: {
+          family: "Font Awesome 5 Free";
+          size: .625rem;
+          weight: 600;
+        }
+        width: 1.5rem;
+        height: 1.5rem;
+        border-radius: 50%;
+        text-align: center;
+        padding-top: .25rem;
+        background: rgba($dark, .1);
+        color: inherit;
+      }
+    }
+  }
+  &-check-incircle-primary {
+    & > li::before {
+      background: rgba($primary, 1);
+      color: $white;
+    }
+  }
+  &-check-incircle-soft-primary {
+    & > li::before {
+      background: rgba($primary, .1);
+      color: $primary;
+    }
+  }
+  &-check-incircle-soft-secondary {
+    & > li::before {
+      background: rgba($secondary, .1);
+      color: $secondary;
+    }
+  }
+
+  // Arrow
+  &-arrow,
+  &-arrow-primary,
+  &-arrow-secondary {
+    & > li {
+      padding-left: 1.25rem;
+
+      &::before {
+        content: "\f061";
+        top: 6px;
+        font: {
+          family: "Font Awesome 5 Free";
+          size: .625rem;
+          weight: 600;
+        }
+      }
+    }
+  }
+  &-arrow-primary {
+    & > li::before {
+      color: $primary;
+    }
+  }
+  &-arrow-secondary {
+    & > li::before {
+      color: $secondary;
+    }
+  }
+
+  // Arrow in Circle
+  &-arrow-incircle,
+  &-arrow-incircle-primary,
+  &-arrow-incircle-soft-primary,
+  &-arrow-incircle-soft-secondary {
+    & > li {
+      padding-left: 2.25rem;
+
+      &::before {
+        content: "\f061";
+        top: 2px;
+        font: {
+          family: "Font Awesome 5 Free";
+          size: .625rem;
+          weight: 600;
+        }
+        width: 1.5rem;
+        height: 1.5rem;
+        border-radius: 50%;
+        text-align: center;
+        padding-top: .25rem;
+        background: rgba($dark, .1);
+        color: inherit;
+      }
+    }
+  }
+  &-arrow-incircle-primary {
+    & > li::before {
+      background: rgba($primary, 1);
+      color: $white;
+    }
+  }
+  &-arrow-incircle-soft-primary {
+    & > li::before {
+      background: rgba($primary, .1);
+      color: $primary;
+    }
+  }
+  &-arrow-incircle-soft-secondary {
+    & > li::before {
+      background: rgba($secondary, .1);
+      color: $secondary;
+    }
+  }
+
+  // Chevron
+  &-chevron,
+  &-chevron-primary,
+  &-chevron-secondary {
+    & > li {
+      padding-left: 1rem;
+
+      &::before {
+        content: "\f054";
+        top: 6px;
+        font: {
+          family: "Font Awesome 5 Free";
+          size: .625rem;
+          weight: 600;
+        }
+      }
+    }
+  }
+  &-chevron-primary {
+    & > li::before {
+      color: $primary;
+    }
+  }
+  &-chevron-secondary {
+    & > li::before {
+      color: $secondary;
+    }
+  }
+
+  // Chevron in Circle
+  &-chevron-incircle,
+  &-chevron-incircle-primary,
+  &-chevron-incircle-soft-primary,
+  &-chevron-incircle-soft-secondary {
+    & > li {
+      padding-left: 2.25rem;
+
+      &::before {
+        content: "\f054";
+        top: 2px;
+        font: {
+          family: "Font Awesome 5 Free";
+          size: .625rem;
+          weight: 600;
+        }
+        width: 1.5rem;
+        height: 1.5rem;
+        border-radius: 50%;
+        text-align: center;
+        padding-top: .25rem;
+        background: rgba($dark, .1);
+        color: inherit;
+      }
+    }
+  }
+  &-chevron-incircle-primary {
+    & > li::before {
+      background: rgba($primary, 1);
+      color: $white;
+    }
+  }
+  &-chevron-incircle-soft-primary {
+    & > li::before {
+      background: rgba($primary, .1);
+      color: $primary;
+    }
+  }
+  &-chevron-incircle-soft-secondary {
+    & > li::before {
+      background: rgba($secondary, .1);
+      color: $secondary;
+    }
+  }
+}

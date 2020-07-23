@@ -1,0 +1,31 @@
+/*------------------------------------
+  Form Selector Modern
+------------------------------------*/
+
+.form-selector-modern {
+  width: 100%;
+  padding-left: 0;
+  margin-right: 0;
+  margin-bottom: 1rem;
+
+  &__input {
+    &:checked ~ .form-selector-modern__label {
+      border-color: $primary;
+    }
+  }
+
+  &__label {
+    width: 100%;
+    cursor: pointer;
+    border: 2px solid $gray-300;
+    @include border-radius($border-radius);
+    padding: 1.25rem;
+    padding-left: 3rem;
+
+    &::before,
+    &::after {
+      top: 1.5rem;
+      left: 1.25rem;
+    }
+  }
+}

@@ -1,0 +1,86 @@
+/*------------------------------------
+  Header Navbar Background Colors
+------------------------------------*/
+
+.u-header--navbar-bg {
+	// Section
+  .u-header__section {
+    border-color: transparent;
+  }
+
+  &.u-header--bordered {
+		.u-header__section,
+		.u-header__navbar-brand,
+		.u-header__nav-item-user,
+		.u-header__navbar-v-divider {
+			border-color: $header-divider-color-light;
+		}
+	}
+
+	.u-header__nav-item {
+	  &:hover {
+	    .u-header__nav-link {
+				color: $white;
+	    }
+	  }
+	}
+
+	.u-header__nav-link {
+		color: rgba($white, .7);
+
+	  &:hover {
+			color: $white;
+	  }
+	}
+
+	[class*="btn-text-"] {
+		color: rgba($white, .7);
+
+		&:focus,
+		&:hover {
+			color: $white;
+		}
+	}
+
+	.u-header__nav-item-user {
+		background-color: rgba($white, .075);
+
+		&-name {
+			color: rgba($white, .7);
+
+			&:hover {
+				color: $white;
+			}
+		}
+	}
+
+	.u-hamburger {
+    color: rgba($white, .7);
+
+    &:hover {
+    	color: $white;
+    }
+
+    &__inner {
+	    &,
+	    &::before,
+	    &::after {
+	      background-color: rgba($white, .7);
+	    }
+	  }
+
+		&:hover {
+  		.u-hamburger__inner {
+	      &,
+	      &::before,
+	      &::after {
+	        background-color: $white;
+    		}
+    	}
+    }
+	}
+
+	.navbar-text {
+		color: rgba($white, .7);
+	}
+}

@@ -1,0 +1,37 @@
+/*------------------------------------
+  Like
+------------------------------------*/
+.like {
+  &-inner {
+    font: {
+      family: "Font Awesome 5 Free";
+      style: normal;
+      variant: normal;
+      weight: 400;
+    }
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    text-rendering: auto;
+    line-height: 1;
+    color: $red;
+    transition: transform .15s ease-in-out;
+
+    .active & {
+      font-weight: 900;
+    }
+
+    &::before {
+      content: "\f004";
+
+      // .active & {
+      //   content: "\f004";
+      // }
+    }
+  }
+
+  &:hover &-inner {
+    transform: scale(1.25);
+    color: $red;
+  }
+}

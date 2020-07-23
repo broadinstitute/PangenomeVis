@@ -1,0 +1,60 @@
+/*------------------------------------
+  Form
+------------------------------------*/
+
+.form {
+	@include border-radius($input-border-radius);
+
+	&__input {
+		z-index: $form-z-index;
+	}
+
+	&__append,
+	&__prepend,
+	&__prepend > .btn,
+	&__append > .btn,
+	&__text {
+		background-clip: padding-box;
+	  transition: all $input-btn-transition-timing $input-btn-transition-function;
+	}
+
+	&__append {
+		.btn {
+			margin-left: 1px;
+		}
+	}
+
+	&__text {
+		position: relative;
+
+		&-inner {
+			@include content-centered;
+		}
+	}
+
+	&--no-brd {
+		.form__input,
+		.form__text {
+			border-color: transparent;
+		}
+	}
+
+	&--white-brd {
+		.form__input,
+		.form__text {
+			border-color: $white !important;
+		}
+	}
+
+	&--no-addon-brd {
+		.form__input {
+			&:not(:first-child) {
+				border-left: none;
+			}
+
+			&:not(:last-child) {
+				border-right: none;
+			}
+		}
+	}
+}

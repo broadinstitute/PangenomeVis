@@ -1,0 +1,43 @@
+/*------------------------------------
+  Icon Sizes
+------------------------------------*/
+
+/* Extra Small */
+.u-icon--xs {
+	width: $icon-width-xs;
+	height: $icon-height-xs;
+	font-size: $icon-font-size-xs;
+	@include border-radius($icon-border-radius);
+}
+
+/* Small */
+.u-icon--sm {
+	width: $icon-width-sm;
+	height: $icon-height-sm;
+	font-size: $icon-font-size-sm;
+	@include border-radius($icon-border-radius);
+}
+
+/* Medium */
+.u-icon--md {
+	width: $icon-width-md;
+	height: $icon-height-md;
+	font-size: $icon-font-size-md;
+	@include border-radius($icon-border-radius);
+}
+
+/* Large */
+.u-icon--lg {
+	width: $icon-width-lg;
+	height: $icon-height-lg;
+	font-size: $icon-font-size-lg;
+	@include border-radius($icon-border-radius);
+}
+
+/* Exatra Large */
+.u-icon--xl {
+	width: $icon-width-xl;
+	height: $icon-height-xl;
+	font-size: $icon-font-size-xl;
+	@include border-radius($icon-border-radius);
+}

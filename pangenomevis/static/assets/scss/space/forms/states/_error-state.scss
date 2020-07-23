@@ -1,0 +1,22 @@
+/*------------------------------------
+  Error State
+------------------------------------*/
+
+.u-has-error {
+  .form {
+    &.u-focus-state {
+      box-shadow: $form-error-focus-box-shadow;
+    }
+
+    &:focus,
+    &.u-focus-state .form__text,
+    &.u-focus-state .form__input,
+    &.u-focus-state *:focus {
+      border-color: $input-error-color;
+    }
+
+    &.u-focus-state .form__text {
+      color: $input-error-color;
+    }
+  }
+}

@@ -1,0 +1,43 @@
+/*------------------------------------
+  Header Submenu Background Colors
+------------------------------------*/
+
+.u-header--sub-menu-dark-bg {
+	@each $breakpoint in map-keys($grid-breakpoints) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    &#{$infix} {
+    	@include media-breakpoint-up($breakpoint) {
+    		// Submenu
+				.u-header__navbar-nav .u-header__sub-menu {
+					background-color: $dark;
+          border-color: $header-sub-menu-divider-light-color;
+
+          &-title {
+            color: rgba($white, .9);
+          }
+
+          &-nav-link {
+            color: rgba($white, .5);
+
+            &:hover {
+              color: $white;
+            }
+          }
+        }
+
+        // Mega Menu
+        .u-header__mega-menu-col {
+          &:not(:last-child) {
+            border-right-color: $header-sub-menu-divider-light-color;
+          }
+        }
+
+        // Dropdown
+        .dropdown-divider {
+					border-color: $header-sub-menu-divider-light-color;
+        }
+			}
+		}
+	}
+}

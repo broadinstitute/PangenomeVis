@@ -1,0 +1,73 @@
+/*------------------------------------
+  Input Dropdown
+------------------------------------*/
+.u-guests {
+  &__input {
+    cursor: pointer;
+    z-index: 2;
+
+    &-i {
+      fill: $gray-150;
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 3;
+
+      .open & {
+        transform: translateY(-50%) rotate(180deg);
+      }
+    }
+  }
+
+  &-options {
+    margin-top: .5rem;
+    width: 87%;
+    z-index: 1;
+
+    &__label {
+      line-height: 1.5;
+
+      &-info {
+        display: block;
+        font-style: normal;
+        color: $gray-700;
+      }
+    }
+
+    &__ctrl,
+    &__value {
+      padding: {
+        top: .3rem;
+        bottom: .3rem;
+      }
+    }
+
+    &__ctrl {
+      padding: {
+        left: .65rem;
+        right: .65rem;
+      }
+      border: solid 1px $input-border-color;
+      cursor: pointer;
+    }
+
+    &__value {
+      width: 3rem;
+      text-align: center;
+      border: {
+        top: solid 1px $input-border-color;
+        bottom: solid 1px $input-border-color;
+      }
+    }
+
+    &__ctrl--minus {
+      @include border-top-left-radius($border-radius);
+      @include border-bottom-left-radius($border-radius);
+    }
+    &__ctrl--plus {
+      @include border-top-right-radius($border-radius);
+      @include border-bottom-right-radius($border-radius);
+    }
+  }
+}

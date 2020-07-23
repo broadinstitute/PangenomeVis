@@ -1,0 +1,25 @@
+/*------------------------------------
+  Icon
+------------------------------------*/
+
+.u-icon {
+	position: relative;
+  // z-index: $icon-z-index;
+	line-height: $icon-line-height;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  width: $icon-width;
+  height: $icon-height;
+  font-size: $icon-font-size;
+  @include border-radius($icon-border-radius);
+	transition: $icon-transition;
+
+	&__inner {
+  	@include content-centered;
+  }
+}
+
+.u-icon--shadow {
+  box-shadow: 0 .25rem .5rem 0 $gray-300;
+}

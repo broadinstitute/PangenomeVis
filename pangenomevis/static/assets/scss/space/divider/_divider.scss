@@ -1,0 +1,28 @@
+/*------------------------------------
+  Divider
+------------------------------------*/
+
+.u-divider {
+  position: relative;
+  display: inline-block;
+
+  &::before,
+  &::after {
+    position: absolute;
+    top: 50%;
+    background-color: $divider-bg-color;
+    content: "";
+  }
+
+  &::before {
+    right: 100%;
+  }
+
+  &::after {
+    left: 100%;
+  }
+
+  &-wrapper {
+    overflow: hidden;
+  }
+}

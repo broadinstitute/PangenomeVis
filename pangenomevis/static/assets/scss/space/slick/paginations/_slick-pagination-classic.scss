@@ -1,0 +1,17 @@
+/*------------------------------------
+  Slick Pagination Classic
+------------------------------------*/
+
+.u-slick--pagination-classic {
+  .slick-slide {
+    cursor: pointer;
+    opacity: .5;
+    border-top: 4px solid rgba($white, .1);
+    transition: $transition-timing;
+  }
+
+  .slick-current {
+    opacity: 1;
+    border-top-color: $white;
+  }
+}

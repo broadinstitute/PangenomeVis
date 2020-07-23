@@ -1,0 +1,22 @@
+// Bootstrap setup
+@import '../vendor/bootstrap/scss/functions';
+
+// Space setup
+@import 'space/variables';
+
+// Custom setup
+@import 'user-variables';
+
+// Bootstrap core
+@import '../vendor/bootstrap/scss/bootstrap';
+
+/*----------------------------------------------------------------------
+  * Space - Responsive Website Template version v1.6
+  * Copyright 2019 Htmlstream
+  * Licensed under Bootstrap Themes (https://themes.getbootstrap.com/licenses/)
+------------------------------------------------------------------------*/
+
+@import 'space/space';
+
+// Custom core
+@import 'user';

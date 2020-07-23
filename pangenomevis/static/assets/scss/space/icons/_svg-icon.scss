@@ -1,0 +1,115 @@
+/*------------------------------------
+  SVG Icon
+------------------------------------*/
+
+.svg-icon {
+  display: inline-block;
+
+  &[class*="text-"] > svg [fill]:not([fill="none"]) {
+    fill: currentColor !important;
+  }
+
+  // Sizes
+  & > svg {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+
+  &-2xs > svg {
+    width: 1.13rem;
+    height: 1.13rem;
+  }
+  &-xs > svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  &-sm > svg {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  &-lg > svg {
+    width: 4.5rem;
+    height: 4.5rem;
+  }
+  &-xl > svg {
+    width: 5.5rem;
+    height: 5.5rem;
+  }
+
+  // Stroke Icons
+  &-stroke line,
+  &-stroke path,
+  &-stroke polyline,
+  &-stroke polygon,
+  &-stroke circle,
+  &-stroke rect,
+  &-stroke ellipse {
+    fill: none;
+    stroke-width: 1px;
+  }
+  &-stroke-2 line,
+  &-stroke-2 path,
+  &-stroke-2 polyline,
+  &-stroke-2 polygon,
+  &-stroke-2 circle,
+  &-stroke-2 rect,
+  &-stroke-2 ellipse {
+    stroke-width: 2px;
+  }
+
+  // Colors
+  &-stroke.text-primary line,
+  &-stroke.text-primary path,
+  &-stroke.text-primary polyline,
+  &-stroke.text-primary polygon,
+  &-stroke.text-primary circle,
+  &-stroke.text-primary rect,
+  &-stroke.text-primary ellipse {
+    stroke: $primary;
+  }
+  &-stroke.text-secondary line,
+  &-stroke.text-secondary path,
+  &-stroke.text-secondary polyline,
+  &-stroke.text-secondary polygon,
+  &-stroke.text-secondary circle,
+  &-stroke.text-secondary rect,
+  &-stroke.text-secondary ellipse {
+    stroke: $secondary;
+  }
+  &-stroke.text-success line,
+  &-stroke.text-success path,
+  &-stroke.text-success polyline,
+  &-stroke.text-success polygon,
+  &-stroke.text-success circle,
+  &-stroke.text-success rect,
+  &-stroke.text-success ellipse {
+    stroke: $success;
+  }
+  &-stroke.text-danger line,
+  &-stroke.text-danger path,
+  &-stroke.text-danger polyline,
+  &-stroke.text-danger polygon,
+  &-stroke.text-danger circle,
+  &-stroke.text-danger rect,
+  &-stroke.text-danger ellipse {
+    stroke: $danger;
+  }
+  &-stroke.text-warning line,
+  &-stroke.text-warning path,
+  &-stroke.text-warning polyline,
+  &-stroke.text-warning polygon,
+  &-stroke.text-warning circle,
+  &-stroke.text-warning rect,
+  &-stroke.text-warning ellipse {
+    stroke: $warning;
+  }
+  &-stroke.text-info line,
+  &-stroke.text-info path,
+  &-stroke.text-info polyline,
+  &-stroke.text-info polygon,
+  &-stroke.text-info circle,
+  &-stroke.text-info rect,
+  &-stroke.text-info ellipse {
+    stroke: $info;
+  }
+}

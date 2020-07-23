@@ -1,0 +1,22 @@
+/*------------------------------------
+  Signin Form
+------------------------------------*/
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #f5f8fb;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 480px;
+  margin: auto;
+}

@@ -1,0 +1,34 @@
+/*------------------------------------
+  Slick Pagination Modern
+------------------------------------*/
+
+.u-slick--pagination-modern {
+	margin-right: -.9375rem;
+
+	&__item {
+		padding-right: .9375rem;
+
+		@include media-breakpoint-up(lg) {
+			max-width: 25%;
+		}
+
+		&-img {
+			width: 6.25rem;
+			height: 4.375rem;
+		}
+
+	  &-text {
+	    transition: $transition-timing;
+	  }
+
+		&.slick-current {
+			color: $primary;
+		}
+
+	  &:hover {
+	    .u-slick--pagination-modern__item-text {
+	      color: $primary;
+	    }
+	  }
+	}
+}

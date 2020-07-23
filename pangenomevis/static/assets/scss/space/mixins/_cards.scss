@@ -1,0 +1,11 @@
+//
+// Cards
+//
+
+// Frame style
+@mixin card-frame-style($hs-border) {
+  &.active,
+  &:hover {
+    border-color: $hs-border;
+  }
+}

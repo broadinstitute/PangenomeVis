@@ -1,0 +1,67 @@
+/*------------------------------------
+  Tab Vertical
+------------------------------------*/
+
+.tab-vertical {
+  .tab-vertical__nav-link {
+    color: $paragraph-color;
+    font-weight: $font-weight-normal;
+    @include border-radius(0);
+    padding-left: 0;
+
+    &.active {
+      color: $primary;
+      background-color: transparent;
+    }
+
+    &:hover {
+      color: $primary;
+    }
+  }
+}
+
+// Medium Devices
+@include media-breakpoint-up(md) {
+  .tab-vertical-md {
+    position: relative;
+    box-shadow: 26px 0 26px -12px rgba($gray-700, .06);
+
+    &::after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: .25rem;
+      height: 100%;
+      background-color: rgba($gray-700, .09);
+      @include border-top-radius($border-radius);
+      @include border-bottom-radius($border-radius);
+      content: " ";
+    }
+
+    .tab-vertical__nav-link {
+      position: relative;
+
+      &::after {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: .25rem;
+        height: 100%;
+        background-color: transparent;
+        @include border-top-radius($border-radius);
+        @include border-bottom-radius($border-radius);
+        content: " ";
+      }
+
+      &.active {
+        &::after {
+          background-color: $primary;
+        }
+      }
+
+      &:hover {
+        color: $primary;
+      }
+    }
+  }
+}

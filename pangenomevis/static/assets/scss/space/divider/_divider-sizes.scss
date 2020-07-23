@@ -1,0 +1,25 @@
+/*------------------------------------
+  Divider Sizes
+------------------------------------*/
+
+/* Extra Small */
+.u-divider {
+  &--xs {
+    font-size: $divider-font-size-xs;
+
+    &::before,
+    &::after {
+      width: $divider-width;
+      height: $divider-height;
+      transform: translateY(-50%);
+    }
+
+    &::before {
+      margin-right: .625rem;
+    }
+
+    &::after {
+      margin-left: .625rem;
+    }
+  }
+}

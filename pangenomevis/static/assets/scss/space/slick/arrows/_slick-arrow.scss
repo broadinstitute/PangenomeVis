@@ -1,0 +1,59 @@
+/*------------------------------------
+  Slick Arrows
+------------------------------------*/
+
+.u-slick__arrow {
+	z-index: 1;
+	line-height: 0;
+	display: inline-block;
+	color: $slick-arrow-color;
+	width: $slick-arrow-width;
+	height: $slick-arrow-height;
+	font-size: $slick-arrow-font-size;
+	cursor: pointer;
+	transition: $slick-arrow-transition;
+
+	&:hover {
+		color: $slick-arrow-hover-color;
+	}
+
+	&-inner {
+		&:before {
+			@include content-centered;
+		}
+
+		&--left {
+			left: 0;
+		}
+
+		&--right {
+			right: 0;
+		}
+	}
+
+	&.slick-disabled {
+		color: $slick-arrow-disabled-color;
+		cursor: auto;
+	}
+}
+
+/* Modern Version */
+.u-slick__arrow--shadowed {
+	color: $slick-arrow-shadowed-color;
+	background-color: $slick-arrow-shadowed-bg-color;
+	box-shadow: $slick-arrow-shadowed-shadow;
+}
+
+.u-slick__arrow-pos--bottom-minus-7 {
+	position: absolute;
+	bottom: -4rem;
+}
+
+/* Center Alignment */
+.u-slick__arrow-centered--x {
+	@include content-centered(true, false);
+}
+
+.u-slick__arrow-centered--y {
+	@include content-centered(false, true);
+}
