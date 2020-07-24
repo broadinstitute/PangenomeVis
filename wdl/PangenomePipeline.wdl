@@ -1,6 +1,6 @@
 version 1.0
 
-import "https://raw.githubusercontent.com/broadinstitute/GATK-for-Microbes/ah_initial_wdl/MicrobialAlignmentPipeline.wdl" as AlignAndMarkDuplicates
+import "https://raw.githubusercontent.com/broadinstitute/PangenomeVis/ah-wdl/wdl/MicrobialAlignmentPipeline.wdl" as AlignAndMarkDuplicates
 
 
 workflow PangenomePipeline {

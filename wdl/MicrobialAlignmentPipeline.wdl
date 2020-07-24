@@ -7,10 +7,10 @@ workflow MicrobialAlignmentPipeline {
   }
 
   input {
-    File unmapped_bam
+    File? unmapped_bam
     File fastq1
     File fastq2
-    String basename = basename(unmapped_bam, ".bam")
+    String basename = basename(fastq1, ".1.fa.gz")
     File ref_dict
     File ref_fasta
     File ref_fasta_index
