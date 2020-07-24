@@ -4,21 +4,22 @@ from configparser import ConfigParser
 from pathlib import Path
 from typing import Optional, Union, Iterable
 
-import networkx
+from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
+from starlette.responses import HTMLResponse, FileResponse
+
+# import networkx
 # import pyfrost
 # from pyfrost import Kmer
 
-from fastapi import FastAPI
-from fastapi.staticfiles import StaticFiles
-
-#GraphLike = Union[networkx.DiGraph, pyfrost.BifrostDiGraph]
+# GraphLike = Union[networkx.DiGraph, pyfrost.BifrostDiGraph]
 
 app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
+
 app_config = ConfigParser()
 app_config.read([Path(__file__).with_name("settings.conf")])
-
 
 # def kmerize_seq(k, seq: str, canonical: bool=False) -> Iterable[Kmer]:
 #     for pos in range(len(seq) - k + 1):
@@ -95,6 +96,16 @@ app_config.read([Path(__file__).with_name("settings.conf")])
 #
 # # Keep graph in memory
 # graph_backed = PyfrostBackend()
+
+
+@app.get("/")
+def root():
+    return FileResponse('./static/index.html')
+
+
+@app.get("/index.js")
+def root():
+    return FileResponse('./static/index.js')
 
 
 @app.get("/reference/{color_id}")
