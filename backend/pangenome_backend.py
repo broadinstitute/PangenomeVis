@@ -14,7 +14,7 @@ from fastapi.staticfiles import StaticFiles
 #GraphLike = Union[networkx.DiGraph, pyfrost.BifrostDiGraph]
 
 app = FastAPI()
-#app.mount("/static", StaticFiles(directory="static"), name="static")
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 app_config = ConfigParser()
 app_config.read([Path(__file__).with_name("settings.conf")])
