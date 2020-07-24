@@ -112,38 +112,40 @@ task AlignAndMarkDuplicates {
     bash_ref_fasta=~{local_ref_fasta}
     # echo "ref_fasta=$bash_ref_fasta"
       /usr/gitc/~{bwa_commandline} ~{fastq1} ~{fastq2} 2> >(tee ~{output_bam_basename}.bwa.stderr.log >&2) > ~{basename}.realigned_bam
-      if defined(~{unmapped_bam})  {
-      java -Xms3000m -jar /usr/gitc/picard.jar \
-      MergeBamAlignment \
-      VALIDATION_STRINGENCY=SILENT \
-      EXPECTED_ORIENTATIONS=FR \
-      ATTRIBUTES_TO_RETAIN=X0 \
-      ATTRIBUTES_TO_REMOVE=NM \
-      ATTRIBUTES_TO_REMOVE=MD \
-      ALIGNED_BAM=~{basename}.realigned_bam \
-      UNMAPPED_BAM=~{unmapped_bam} \
-      OUTPUT=mba.bam \
-      REFERENCE_SEQUENCE=~{local_ref_fasta} \
-      PAIRED_RUN=true \
-      SORT_ORDER="unsorted" \
-      IS_BISULFITE_SEQUENCE=false \
-      ALIGNED_READS_ONLY=false \
-      CLIP_ADAPTERS=false \
-      MAX_RECORDS_IN_RAM=2000000 \
-      ADD_MATE_CIGAR=true \
-      MAX_INSERTIONS_OR_DELETIONS=-1 \
-      PRIMARY_ALIGNMENT_STRATEGY=MostDistant \
-      PROGRAM_RECORD_ID="bwamem" \
-      PROGRAM_GROUP_VERSION="~{bwa_version}" \
-      PROGRAM_GROUP_COMMAND_LINE="~{bwa_commandline}" \
-      PROGRAM_GROUP_NAME="bwamem" \
-      UNMAPPED_READ_STRATEGY=COPY_TO_TAG \
-      ALIGNER_PROPER_PAIR_FLAGS=true \
-      UNMAP_CONTAMINANT_READS=true \
-      ADD_PG_TAG_TO_READS=false
-      }
+    #   if defined(~{unmapped_bam})  {
+    #   java -Xms3000m -jar /usr/gitc/picard.jar \
+    #   MergeBamAlignment \
+    #   VALIDATION_STRINGENCY=SILENT \
+    #   EXPECTED_ORIENTATIONS=FR \
+    #   ATTRIBUTES_TO_RETAIN=X0 \
+    #   ATTRIBUTES_TO_REMOVE=NM \
+    #   ATTRIBUTES_TO_REMOVE=MD \
+    #   ALIGNED_BAM=~{basename}.realigned_bam \
+    #   UNMAPPED_BAM=~{unmapped_bam} \
+    #   OUTPUT=mba.bam \
+    #   REFERENCE_SEQUENCE=~{local_ref_fasta} \
+    #   PAIRED_RUN=true \
+    #   SORT_ORDER="unsorted" \
+    #   IS_BISULFITE_SEQUENCE=false \
+    #   ALIGNED_READS_ONLY=false \
+    #   CLIP_ADAPTERS=false \
+    #   MAX_RECORDS_IN_RAM=2000000 \
+    #   ADD_MATE_CIGAR=true \
+    #   MAX_INSERTIONS_OR_DELETIONS=-1 \
+    #   PRIMARY_ALIGNMENT_STRATEGY=MostDistant \
+    #   PROGRAM_RECORD_ID="bwamem" \
+    #   PROGRAM_GROUP_VERSION="~{bwa_version}" \
+    #   PROGRAM_GROUP_COMMAND_LINE="~{bwa_commandline}" \
+    #   PROGRAM_GROUP_NAME="bwamem" \
+    #   UNMAPPED_READ_STRATEGY=COPY_TO_TAG \
+    #   ALIGNER_PROPER_PAIR_FLAGS=true \
+    #   UNMAP_CONTAMINANT_READS=true \
+    #   ADD_PG_TAG_TO_READS=false
+    #   }
 
-    File markDupInput = select_first([mba.bam, ~{basename}.realigned_bam])
+    # File markDupInput = select_first([mba.bam, ~{basename}.realigned_bam])
+
+    File markDupInput = ~{basename}.realigned_bam
 
     java -Xms4000m -jar /usr/gitc/picard.jar \
       MarkDuplicates \
