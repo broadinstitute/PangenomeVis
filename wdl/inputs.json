@@ -1,5 +1,5 @@
 {
-"PangenomePipeline.destination":"gs://broad-dsp-spec-ops/scratch/andrea/pangenome/",
+"PangenomePipeline.destination":"gs://broad-dsp-spec-ops/scratch/andrea/pangenome",
 "PangenomePipeline.references":["gs://broad-dsp-spec-ops/scratch/andrea/pangenome/ins/haps/alt1_hap.fasta"],
 "PangenomePipeline.fq1_samples":["gs://broad-dsp-spec-ops/scratch/andrea/pangenome/ins/reads/sample_A.imperfect.1.fa.gz"],
 "PangenomePipeline.fq2_samples":["gs://broad-dsp-spec-ops/scratch/andrea/pangenome/ins/reads/sample_A.imperfect.2.fa.gz"],

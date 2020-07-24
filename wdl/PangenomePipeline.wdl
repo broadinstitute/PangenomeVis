@@ -47,7 +47,10 @@ workflow PangenomePipeline {
 
         if (defined(destination)) {
            call moveOutputs {
-               input: destination = destination
+               input: 
+                  destination = destination,
+                  bam = AlignToRef.aligned_bam,
+                  bai = AlignToRef.aligned_bai
            }
         }
         
@@ -57,15 +60,17 @@ workflow PangenomePipeline {
 
 task moveOutputs {
     input {
-        String? destination
+      File bam
+      File bai
+      String? destination
     }
     command <<<
-        gsutil cp AlignToRef.output_bam destination
-        gsutil cp AlignToRef.output_bam_index destination
+        gsutil cp ~{bam} ~{destination}/
+        gsutil cp ~{bai} ~{destination}/
     >>>
   runtime {
     memory: "1 GB"
-    docker: "us.gcr.io/broad-gotc-prod/genomes-in-the-cloud:2.4.2-1552931386"
+    docker: "us.gcr.io/broad-gatk/gatk:4.1.7.0"
   }
 }
 
