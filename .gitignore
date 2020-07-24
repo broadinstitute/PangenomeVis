@@ -1,5 +1,5 @@
-backend/__pycache__/
-backend/venv/
+app/__pycache__/
+app/venv/
 scratch/
 .idea/
-backend/client/node_modules/
+app/client/node_modules/

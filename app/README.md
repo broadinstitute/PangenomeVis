@@ -9,13 +9,17 @@ We use [FastAPI](https://fastapi.tiangolo.com/) as API framework.
 ```bash
 python3 -mvenv venv
 . venv/bin/activate
-pip install numpy
 pip install -r requirements.txt
 ```
 
-# How to run
+# How to run locally
 
 ```bash
-uvicorn pangenome_backend:app --reload
+./deploy_locally.sh
 ```
 
+# How to run on Google App Engine (must have Broad Institute credentials)
+
+```bash
+./deploy_gae.sh
+```
