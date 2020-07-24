@@ -21,3 +21,6 @@ __pycache__/
 Pipfile
 Pipfile.lock
 venv/
+client/node_modules/
+client/public/
+client/src/

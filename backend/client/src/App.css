@@ -1,0 +1,19 @@
+.flexcontainer {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100vh;
+}
+
+.sidebar {
+  flex-basis: 40rem;
+  flex-grow: 1;
+}
+
+.body {
+  flex-basis: 0;
+  flex-grow: 999;
+}
+
+.header {
+  height: 5rem;
+}

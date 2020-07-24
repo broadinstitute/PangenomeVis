@@ -15,8 +15,8 @@ from starlette.responses import HTMLResponse, FileResponse
 # GraphLike = Union[networkx.DiGraph, pyfrost.BifrostDiGraph]
 
 app = FastAPI()
-app.mount("/static", StaticFiles(directory="static"), name="static")
-
+app.mount("/static/css", StaticFiles(directory="./client/build/static/css"), name="css")
+app.mount("/static/js", StaticFiles(directory="./client/build/static/js"), name="js")
 
 app_config = ConfigParser()
 app_config.read([Path(__file__).with_name("settings.conf")])
@@ -100,12 +100,18 @@ app_config.read([Path(__file__).with_name("settings.conf")])
 
 @app.get("/")
 def root():
-    return FileResponse('./static/index.html')
+    return FileResponse('client/build/index.html')
 
 
-@app.get("/index.js")
-def root():
-    return FileResponse('./static/index.js')
+@app.get("/manifest.json")
+def manifest():
+    return FileResponse('client/build/manifest.json')
+
+
+@app.get("/logo192.png")
+def logo192():
+    return FileResponse('client/build/logo192.png')
+
 
 
 @app.get("/reference/{color_id}")
