@@ -145,11 +145,9 @@ task AlignAndMarkDuplicates {
 
     # File markDupInput = select_first([mba.bam, ~{basename}.realigned_bam])
 
-    File markDupInput = ~{basename}.realigned_bam
-
     java -Xms4000m -jar /usr/gitc/picard.jar \
       MarkDuplicates \
-      INPUT=markDupInput \
+      INPUT=~{basename}.realigned_bam \
       OUTPUT=md.bam \
       METRICS_FILE=~{metrics_filename} \
       VALIDATION_STRINGENCY=SILENT \
