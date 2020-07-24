@@ -143,7 +143,7 @@ task AlignAndMarkDuplicates {
       ADD_PG_TAG_TO_READS=false
       }
 
-    File markDupInput = select_first(mba.bam, ~{basename}.realigned_bam)
+    File markDupInput = select_first([mba.bam, ~{basename}.realigned_bam])
 
     java -Xms4000m -jar /usr/gitc/picard.jar \
       MarkDuplicates \
