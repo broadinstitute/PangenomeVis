@@ -24,16 +24,15 @@ workflow PangenomePipeline {
   }
 
   scatter (ref in references) {
-    String ref_basename = basename(basename(basename(local_ref_fasta, ".gz"), "sta"), ".fa")
+    String ref_basename = basename(basename(basename(ref, ".gz"), "sta"), ".fa")
     call IndexReference { input: ref_fasta = ref }
     
-    scatter (fq1 in fq1_samples) {
-        String fq_basename=basename(fq1, ".1.fa.gz")
-        String fq2 = fq_basename + ".2.ga.gz" 
+    scatter (index in range(length(fq1_samples))) {
+        String fq_basename=basename(fq1_samples[index], ".1.fa.gz")
         call AlignAndMarkDuplicates.MicrobialAlignmentPipeline as AlignToRef {
             input:
-                fastq1 = fq1,
-                fastq2 = fq2,
+                fastq1 = fq1_samples[index],
+                fastq2 = fq2_samples[index],
                 basename = fq_basename + "_" + ref_basename,
                 ref_dict = IndexReference.ref_dict,
                 ref_fasta = ref,
@@ -84,7 +83,7 @@ task IndexReference {
       set -e
       cp ~{ref_fasta} .
       /usr/gitc/bwa index ~{basename}
-      java -jar /usr/gitc/picard.jar CreateSequenceDictionary REFERENCE=ref_fasta OUTPUT=~{basename}.dict
+      java -jar /usr/gitc/picard.jar CreateSequenceDictionary REFERENCE=~{ref_fasta} OUTPUT=~{basename}.dict
       
   >>>
   runtime {

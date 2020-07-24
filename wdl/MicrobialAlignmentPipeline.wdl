@@ -112,7 +112,7 @@ task AlignAndMarkDuplicates {
     bash_ref_fasta=~{local_ref_fasta}
     # echo "ref_fasta=$bash_ref_fasta"
       /usr/gitc/~{bwa_commandline} ~{fastq1} ~{fastq2} 2> >(tee ~{output_bam_basename}.bwa.stderr.log >&2) > ~{basename}.realigned_bam
-      if defined(unmapped_bam)  {
+      if defined(~{unmapped_bam})  {
       java -Xms3000m -jar /usr/gitc/picard.jar \
       MergeBamAlignment \
       VALIDATION_STRINGENCY=SILENT \
