@@ -55,10 +55,16 @@ class PyfrostBackend(BaseGraphBackend):
     def __init__(self):
         super().__init__()
 
-        self.ccdbg = pyfrost.load(app_config['pyfrost']['graph'],
-                                  app_config['pyfrost']['colors'])
+        try:
+            self.ccdbg = pyfrost.load(app_config['pyfrost']['graph'],
+                                      app_config['pyfrost']['colors'])
+        except RuntimeError:
+            self.ccdbg = None
 
     def get_neighborhood(self, query: str, radius: int=5) -> GraphLike:
+        if not self.ccdbg:
+            raise Exception("Could not load graph")
+
         neighborhood = networkx.DiGraph()
 
         for kmer in kmerize_seq(self.ccdbg.graph['k'], query):
@@ -97,6 +103,21 @@ class PyfrostBackend(BaseGraphBackend):
 
         return neighborhood
 
+    def get_nodes(self):
+        return (
+            {"id": str(n), "sequence": data['unitig_sequence'], "tags": {"colors": list(data['colors'])}}
+            for n, data in self.ccdbg.nodes(data=True)
+        )
+
+    def get_links(self):
+        return (
+            {"source": str(u), "target": str(v)}
+            for u, v in self.ccdbg.out_edges
+        )
+
+    def get_color_names(self):
+        return self.ccdbg.graph['color_names']
+
 
 # Keep graph in memory
 graph_backend = PyfrostBackend()
@@ -126,3 +147,12 @@ async def get_references():
 async def get_reference(color_id: int):
     # TODO
     pass
+
+
+@app.get("/graph")
+async def get_test_graph():
+    return {
+        "nodes": list(graph_backend.get_nodes()),
+        "links": list(graph_backend.get_links()),
+        "color_names": list(graph_backend.get_color_names())
+    }
