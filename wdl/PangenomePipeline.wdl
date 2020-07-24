@@ -24,15 +24,17 @@ workflow PangenomePipeline {
   }
 
   scatter (ref in references) {
+    String ref_basename = basename(basename(basename(local_ref_fasta, ".gz"), "sta"), ".fa")
     call IndexReference { input: ref_fasta = ref }
     
     scatter (fq1 in fq1_samples) {
-        String fq_basename=basename(fq1_samples, ".1.fa.gz")
+        String fq_basename=basename(fq1, ".1.fa.gz")
         String fq2 = fq_basename + ".2.ga.gz" 
         call AlignAndMarkDuplicates.MicrobialAlignmentPipeline as AlignToRef {
             input:
                 fastq1 = fq1,
                 fastq2 = fq2,
+                basename = fq_basename + "_" + ref_basename,
                 ref_dict = IndexReference.ref_dict,
                 ref_fasta = ref,
                 ref_fasta_index = ref + ".fai",
@@ -62,6 +64,10 @@ task moveOutputs {
         gsutil cp AlignToRef.output_bam destination
         gsutil cp AlignToRef.output_bam_index destination
     >>>
+  runtime {
+    memory: "1 GB"
+    docker: "us.gcr.io/broad-gotc-prod/genomes-in-the-cloud:2.4.2-1552931386"
+  }
 }
 
 
@@ -78,8 +84,8 @@ task IndexReference {
       set -e
       cp ~{ref_fasta} .
       /usr/gitc/bwa index ~{basename}
-      ls -al
-      find . -name *.pac -print
+      java -jar /usr/gitc/picard.jar CreateSequenceDictionary REFERENCE=ref_fasta OUTPUT=~{basename}.dict
+      
   >>>
   runtime {
     preemptible: select_first([preemptible_tries, 5])
@@ -94,6 +100,7 @@ task IndexReference {
     File ref_bwt = "~{basename}.bwt"
     File ref_pac = "~{basename}.pac"
     File ref_sa = "~{basename}.sa"
+    File ref_dict = "~{basename}.dict"
   }
 }
 

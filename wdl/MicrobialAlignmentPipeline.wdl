@@ -10,7 +10,7 @@ workflow MicrobialAlignmentPipeline {
     File? unmapped_bam
     File fastq1
     File fastq2
-    String basename = basename(fastq1, ".1.fa.gz")
+    String basename
     File ref_dict
     File ref_fasta
     File ref_fasta_index
@@ -36,8 +36,8 @@ workflow MicrobialAlignmentPipeline {
       fastq1 = fastq1,
       fastq2 = fastq2,
       bwa_version = GetBwaVersion.version,
-      output_bam_basename = basename + ".realigned",
       basename = basename,
+      output_bam_basename = basename + ".realigned",
       ref_fasta = ref_fasta,
       ref_fasta_index = ref_fasta_index,
       ref_dict = ref_dict,
@@ -113,7 +113,7 @@ task AlignAndMarkDuplicates {
     # echo "ref_fasta=$bash_ref_fasta"
       /usr/gitc/~{bwa_commandline} ~{fastq1} ~{fastq2} 2> >(tee ~{output_bam_basename}.bwa.stderr.log >&2) > ~{basename}.realigned_bam
       if defined(unmapped_bam)  {
-     java -Xms3000m -jar /usr/gitc/picard.jar \
+      java -Xms3000m -jar /usr/gitc/picard.jar \
       MergeBamAlignment \
       VALIDATION_STRINGENCY=SILENT \
       EXPECTED_ORIENTATIONS=FR \
@@ -143,9 +143,11 @@ task AlignAndMarkDuplicates {
       ADD_PG_TAG_TO_READS=false
       }
 
+    File markDupInput = select_first(mba.bam, ~{basename}.realigned_bam)
+
     java -Xms4000m -jar /usr/gitc/picard.jar \
       MarkDuplicates \
-      INPUT=mba.bam \
+      INPUT=markDupInput \
       OUTPUT=md.bam \
       METRICS_FILE=~{metrics_filename} \
       VALIDATION_STRINGENCY=SILENT \
