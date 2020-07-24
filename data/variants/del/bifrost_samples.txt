@@ -1,0 +1,6 @@
+reads/sample_A.imperfect.concat.fa.gz
+reads/sample_B.imperfect.concat.fa.gz
+reads/sample_C.imperfect.concat.fa.gz
+reads/sample_D.imperfect.concat.fa.gz
+reads/sample_E.imperfect.concat.fa.gz
+reads/sample_F.imperfect.concat.fa.gz

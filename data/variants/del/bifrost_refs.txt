@@ -1,0 +1,3 @@
+haps/alt1_hap.fasta
+haps/alt2_hap.fasta
+haps/ref_hap.fasta
