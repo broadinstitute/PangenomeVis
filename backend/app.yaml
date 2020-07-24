@@ -1,0 +1,2 @@
+runtime: python37
+entrypoint: gunicorn pangenome_backend:app -w 4 -k uvicorn.workers.UvicornWorker

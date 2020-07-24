@@ -6,6 +6,7 @@ networkx
 jinja2
 ujson
 uvicorn
+gunicorn
 google-cloud-datastore
 pysam
-scikit-bio
+#-e git://github.com/broadinstitute/pyfrost.git@d3efabb0230c530a604571a834bd05423fd3b7a2#egg=pyfrost

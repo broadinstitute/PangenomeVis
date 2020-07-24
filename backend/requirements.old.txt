@@ -1,0 +1,12 @@
+fastapi==0.60.1
+pydantic
+starlette
+aiofiles
+networkx
+jinja2
+ujson
+uvicorn
+google-cloud-datastore
+pysam
+numpy
+scikit-bio
