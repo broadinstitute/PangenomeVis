@@ -37,6 +37,7 @@ workflow MicrobialAlignmentPipeline {
       fastq2 = fastq2,
       bwa_version = GetBwaVersion.version,
       output_bam_basename = basename + ".realigned",
+      basename = basename,
       ref_fasta = ref_fasta,
       ref_fasta_index = ref_fasta_index,
       ref_dict = ref_dict,
@@ -64,6 +65,7 @@ task AlignAndMarkDuplicates {
     String bwa_commandline = "bwa mem -K 100000000 -v 3 -t 2 -Y $bash_ref_fasta"
     String bwa_version
     String output_bam_basename
+    String basename
     File ref_fasta
     File ref_fasta_index
     File ref_dict
@@ -78,7 +80,6 @@ task AlignAndMarkDuplicates {
     Int? preemptible_tries
   }
 
-  String basename = basename(unmapped_bam, ".bam")
   String local_ref_fasta = basename(ref_fasta)
   String metrics_filename = basename + ".metrics"
   Float ref_size = size(ref_fasta, "GB") + size(ref_fasta_index, "GB")
