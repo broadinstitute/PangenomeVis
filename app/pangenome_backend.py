@@ -154,5 +154,4 @@ async def get_test_graph():
     return {
         "nodes": list(graph_backend.get_nodes()),
         "links": list(graph_backend.get_links()),
-        "color_names": list(graph_backend.get_color_names())
     }
