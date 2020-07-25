@@ -1,10 +1,10 @@
 {
-"PangenomePipeline.destination":"gs://broad-dsp-spec-ops/scratch/andrea/pangenome/ins/output",
-"PangenomePipeline.references":[
+"BifrostPipeline.destination":"gs://broad-dsp-spec-ops/scratch/andrea/pangenome/ins/output",
+"BifrostPipeline.references":[
     "gs://broad-dsp-spec-ops/scratch/andrea/pangenome/ins/haps/alt1_hap.fasta",
     "gs://broad-dsp-spec-ops/scratch/andrea/pangenome/ins/haps/alt2_hap.fasta",
     "gs://broad-dsp-spec-ops/scratch/andrea/pangenome/ins/haps/ref_hap.fasta"],
-"PangenomePipeline.fq1_samples":[
+"BifrostPipeline.fq1_samples":[
     "gs://broad-dsp-spec-ops/scratch/andrea/pangenome/ins/reads/sample_A.imperfect.1.fa.gz",
     "gs://broad-dsp-spec-ops/scratch/andrea/pangenome/ins/reads/sample_B.imperfect.1.fa.gz",
     "gs://broad-dsp-spec-ops/scratch/andrea/pangenome/ins/reads/sample_C.imperfect.1.fa.gz",
@@ -12,7 +12,7 @@
     "gs://broad-dsp-spec-ops/scratch/andrea/pangenome/ins/reads/sample_E.imperfect.1.fa.gz",
     "gs://broad-dsp-spec-ops/scratch/andrea/pangenome/ins/reads/sample_F.imperfect.1.fa.gz"
     ],
-"PangenomePipeline.fq2_samples":[
+"BifrostPipeline.fq2_samples":[
     "gs://broad-dsp-spec-ops/scratch/andrea/pangenome/ins/reads/sample_A.imperfect.2.fa.gz",
     "gs://broad-dsp-spec-ops/scratch/andrea/pangenome/ins/reads/sample_B.imperfect.2.fa.gz",
     "gs://broad-dsp-spec-ops/scratch/andrea/pangenome/ins/reads/sample_C.imperfect.2.fa.gz",
@@ -20,6 +20,6 @@
     "gs://broad-dsp-spec-ops/scratch/andrea/pangenome/ins/reads/sample_E.imperfect.2.fa.gz",
     "gs://broad-dsp-spec-ops/scratch/andrea/pangenome/ins/reads/sample_F.imperfect.2.fa.gz"
     ],
-"PangenomePipeline.preemptible_tries":3
+"BifrostPipeline.preemptible_tries":3
 }
 

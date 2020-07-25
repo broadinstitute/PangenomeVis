@@ -1,6 +1,6 @@
 version 1.0
 
-import "https://raw.githubusercontent.com/broadinstitute/PangenomeVis/ah-wdl/wdl/MicrobialAlignmentPipeline.wdl" as AlignAndMarkDuplicates
+import "https://raw.githubusercontent.com/broadinstitute/PangenomeVis/master/wdl/MicrobialAlignmentPipeline.wdl" as AlignAndMarkDuplicates
 
 
 workflow PangenomePipeline {
@@ -19,16 +19,12 @@ workflow PangenomePipeline {
     Int? preemptible_tries
   }
 
-  parameter_meta {
-    ref_aligned_bam: "Output is aligned duplicate marked coordinate sorted bam."
-  }
-
   scatter (ref in references) {
-    String ref_basename = basename(basename(basename(ref, ".gz"), "sta"), ".fa")
+    String ref_basename = basename(basename(basename(basename(ref, ".gz"), "sta"), ".fa"), ".fna")
     call IndexReference { input: ref_fasta = ref }
     
     scatter (index in range(length(fq1_samples))) {
-        String fq_basename=basename(fq1_samples[index], ".1.fa.gz")
+        String fq_basename=basename(basename(fq1_samples[index], "1.fa.gz"), "_R1.fastq.gz")
         call AlignAndMarkDuplicates.MicrobialAlignmentPipeline as AlignToRef {
             input:
                 fastq1 = fq1_samples[index],

@@ -1,0 +1,14 @@
+{
+"PangenomePipeline.destination":"gs://gatk-for-bacteria/pangenome/mtb",
+"PangenomePipeline.references":[
+    "http://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/159/755/GCF_000159755.1_ASM15975v1/GCF_000159755.1_ASM15975v1_genomic.fna.gz"
+    ],
+"PangenomePipeline.fq1_samples":[
+    "http://ftp.sra.ebi.ac.uk/vol1/run/ERR868/ERR868539/1449-02_lib3035_miseq_r0128_301bp_R1.fastq.gz"
+    ],
+"PangenomePipeline.fq2_samples":[
+    "http://ftp.sra.ebi.ac.uk/vol1/run/ERR868/ERR868539/1449-02_lib3035_miseq_r0128_301bp_R2.fastq.gz"
+    ],
+"PangenomePipeline.preemptible_tries":3
+}
+
