@@ -7,5 +7,4 @@ The Broad Institute is developing a new variant discovery algorithm based on the
 
 Navigating these data structures is conceptually easy, but surprisingly difficult in practice as data may have sequencing errors, gaps, tangles, and other obstacles, making visualizing genome graphs an important step for developing variant discovery algorithms. Thus, we’re seeking collaborators to help develop an interactive web tool to display user-selected portions of a multi-sample genome graph (“subgraphs”).
 
-If interested in contributing, join [#dsp-pangenome-vis]
-(https://broadinstitute.slack.com/archives/C018JAW5YF9)
+If interested in contributing, join [#dsp-pangenome-vis](https://broadinstitute.slack.com/archives/C018JAW5YF9)
