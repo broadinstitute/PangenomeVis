@@ -9,6 +9,7 @@ We use [FastAPI](https://fastapi.tiangolo.com/) as API framework.
 ```bash
 python3 -mvenv venv
 . venv/bin/activate
+pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
