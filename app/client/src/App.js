@@ -8,7 +8,7 @@ import igv from 'igv'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
 
-import graph from './MT.json'
+// import graph from './MT.json'
 function IGV() {
   useEffect(() => {
     igv.createBrowser(ref.current, { genome: 'hg38', locus: 'BRCA1' })
@@ -102,6 +102,26 @@ export function GraphContainer(props) {
 }
 function App() {
   const [show, setShow] = useState(false)
+  const [graph, setGraph] = useState()
+
+  useEffect(() => {
+      const fetchData = async () => {
+          const result = await fetch(
+              'https://cors-anywhere.herokuapp.com/http://www.migraph.org/graph'
+          );
+
+          if (!result.ok) {
+              Error("Unable to fetch graph")
+          }
+
+          setGraph(await result.json())
+      }
+
+      fetchData();
+  }, [])
+
+  console.log(graph)
+
   return (
     <div>
       <Header
@@ -112,7 +132,7 @@ function App() {
       <OpenDialog show={show} onHide={() => setShow(false)} />
       <div className="flexcontainer">
         <div id="sidebar" className="sidebar">
-          <GraphContainer graph={graph} />
+          {/*<GraphContainer graph={graph} />*/}
         </div>
         <div className="body">
           <IGV />
