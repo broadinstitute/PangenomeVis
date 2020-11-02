@@ -1,11 +1,15 @@
 import os
+from os import walk
+import re
+import random
+
 from abc import abstractmethod, ABCMeta
 from collections import deque
 from configparser import ConfigParser
 from pathlib import Path
 from typing import Optional, Union, Iterable
 
-from fastapi import FastAPI
+from fastapi import FastAPI, File, UploadFile
 from fastapi.staticfiles import StaticFiles
 from starlette.responses import HTMLResponse, FileResponse
 
@@ -23,6 +27,8 @@ settings_file = os.environ.get("PGV_SETTINGS_FILE",
                                Path(__file__).with_name("settings.conf"))
 app_config = ConfigParser()
 app_config.read([settings_file])
+
+data_path = 'graphs'
 
 
 def kmerize_seq(k, seq: str, canonical: bool=False) -> Iterable[Kmer]:
@@ -51,15 +57,29 @@ class BaseGraphBackend(metaclass=ABCMeta):
         """
 
 
+class HashableNode:
+    def __init__(self, node):
+        self.node = node
+
+    def __hash__(self):
+        return self.node.full_node().__hash__
+
+    def get_node(self):
+        return self.node
+
+
 class PyfrostBackend(BaseGraphBackend):
-    def __init__(self):
+    def __init__(self, graph_file):
         super().__init__()
 
         try:
-            self.ccdbg = pyfrost.load(app_config['pyfrost']['graph'],
-                                      app_config['pyfrost']['colors'])
+            self.ccdbg = pyfrost.load(graph_file)
+
         except RuntimeError:
             self.ccdbg = None
+
+    def get_graph(self):
+        return self.ccdbg
 
     def get_neighborhood(self, query: str, radius: int=5) -> GraphLike:
         if not self.ccdbg:
@@ -76,38 +96,59 @@ class PyfrostBackend(BaseGraphBackend):
                 # Already added in a previous iteration
                 continue
 
+            # print(node)
+
             queue = deque()
-            queue.append((0, node))
+            queue.append((0, HashableNode(node)))
 
             while queue:
-                level, node = queue.popleft()
+                level, item = queue.popleft()
+                node = item.get_node()
 
-                ndata = self.ccdbg.nodes[node]
-                neighborhood.add_node(node, **ndata)
+                print(level)
+                print(node)
+                print(type(node))
+                print(node.rep())
+                print(node.full_node())
+
+                # ndata = self.ccdbg.nodes[node]
+
+                neighborhood.add_node(HashableNode(node))
 
                 if level < radius:
                     for succ in self.ccdbg.successors(node):
                         if succ in neighborhood:
                             continue
 
-                        queue.append((level+1, succ))
+                        print("succ")
+                        print(succ)
+
+                        queue.append((level+1, HashableNode(succ)))
 
                     for pred in self.ccdbg.predecessors(node):
                         if pred in neighborhood:
                             continue
 
-                        queue.append((level+1, pred))
+                        print("pred")
+                        print(pred)
+
+                        queue.append((level+1, HashableNode(pred)))
 
         # Add edges in the subgraph
         neighborhood.add_edges_from(self.ccdbg.out_edges(nbunch=list(neighborhood.nodes)))
 
         return neighborhood
 
-    def get_nodes(self):
-        return (
-            {"id": str(n), "sequence": data['unitig_sequence'], "tags": {"colors": list(data['colors'])}}
-            for n, data in self.ccdbg.nodes(data=True)
-        )
+    def get_nodes(self, data=True):
+        if data:
+            return (
+                {"id": str(n), "sequence": data['unitig_sequence'], "tags": {"colors": list(data['colors'])}}
+                for n, data in self.ccdbg.nodes(data=True)
+            )
+        else:
+            return (
+                {"id": str(n)} for n in self.ccdbg.nodes(data=False)
+            )
 
     def get_links(self):
         return (
@@ -119,8 +160,26 @@ class PyfrostBackend(BaseGraphBackend):
         return self.ccdbg.graph['color_names']
 
 
-# Keep graph in memory
-graph_backend = PyfrostBackend()
+def prepare_graphs():
+    f = {}
+
+    for (dirpath, dirnames, filenames) in walk(data_path):
+        for file in filenames:
+            if file.endswith(".gfa"):
+                f[os.path.basename(dirpath)] = {'path': f'{dirpath}/{file}', 'graph': None}
+
+    return f
+
+
+def get_graph(graph_backends, graph_name):
+    if graph_backends[graph_name]['graph'] is None:
+        graph_backends[graph_name]['graph'] = PyfrostBackend(graph_backends[graph_name]['path'])
+
+    return graph_backends[graph_name]['graph']
+
+
+# Prepare to lazily load graph(s) in memory
+g = prepare_graphs()
 
 
 @app.get("/")
@@ -149,9 +208,72 @@ async def get_reference(color_id: int):
     pass
 
 
-@app.get("/graph")
+@app.post("/graph/upload")
+async def create_upload_file(file: UploadFile = File(...)):
+    return {"filename": file.filename}
+
+
+@app.get("/graph/test")
 async def get_test_graph():
     return {
-        "nodes": list(graph_backend.get_nodes()),
-        "links": list(graph_backend.get_links()),
+        "nodes": list(get_graph(g, 'small_test').get_nodes()),
+        "links": list(get_graph(g, 'small_test').get_links()),
     }
+
+
+@app.get("/graph/list")
+async def list_graphs():
+    return list(g.keys())
+
+
+@app.get("/graph/describe/{graph_name}")
+async def describe_graph(graph_name: str):
+    if graph_name in g:
+        gfa_file = g[graph_name]['path']
+        bfg_colors = re.sub(".gfa", ".bfg_colors", gfa_file)
+        is_cached = g[graph_name]['graph'] is not None
+
+        return {'gfa': gfa_file, 'bfg': bfg_colors, 'is_cached': is_cached}
+
+    return {'gfa': None, 'bfg': None, 'is_cached': None}
+
+
+@app.get("/graph/nodes/{graph_name}")
+async def get_nodes(graph_name: str):
+    pb = get_graph(g, graph_name)
+
+    return pb.get_nodes()
+
+
+@app.get("/graph/links/{graph_name}")
+async def get_links(graph_name: str):
+    pb = get_graph(g, graph_name)
+
+    return pb.get_links()
+
+
+@app.get("/graph/colors/{graph_name}")
+async def get_colors(graph_name: str):
+    pb = get_graph(g, graph_name)
+
+    return pb.get_color_names()
+
+
+@app.get("/graph/random_node/{graph_name}")
+async def get_random_node(graph_name: str):
+    pb = get_graph(g, graph_name)
+
+    nodes = list(pb.get_nodes(data=False))
+    node = random.choice(nodes)
+
+    return node
+
+
+@app.get("/graph/neighborhood/{graph_name}")
+async def get_neighborhood(graph_name: str, query: str, radius: int=5):
+    pb = get_graph(g, graph_name)
+
+    pb.get_neighborhood(query, radius)
+
+    return 'hi'
+
