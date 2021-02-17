@@ -1,5 +1,6 @@
-# PangenomeVis
-## An interactive, JavaScript-based browser for microbial pangenome graphs 
+<center> <h1>PangenomeVis</h1> </center>
+
+# GOAL: An interactive, JavaScript-based browser for microbial pan-genome graphs 
 
 Variant discovery is largely conducted by comparing sample genomes to a single canonical reference genome under the assumption that the sample of interest differs only slightly from its reference.  However, many pathogens diversify their genomes so quickly that the sample and reference may differ greatly.  When these differences are sufficiently large, existing algorithms fail to adequately align sample sequence data to the reference, and variation underlying virulence factors (e.g. drug resistance, immune evasion) may go undetected.
 
@@ -7,4 +8,22 @@ The Broad Institute is developing a new variant discovery algorithm based on the
 
 Navigating these data structures is conceptually easy, but surprisingly difficult in practice as data may have sequencing errors, gaps, tangles, and other obstacles, making visualizing genome graphs an important step for developing variant discovery algorithms. Thus, we’re seeking collaborators to help develop an interactive web tool to display user-selected portions of a multi-sample genome graph (“subgraphs”).
 
-If interested in contributing, join [#dsp-pangenome-vis](https://broadinstitute.slack.com/archives/C018JAW5YF9)
+# For users
+
+An example of a site displayed
+
+<img src="misc/example.png" alt="rGFA example" height="350"/>
+
+MORE TO BE FILLED IN...
+
+# For developers
+
+If interested in contributing, please create tickets, or better yet, join the Slack channel [#dsp-pangenome-vis](https://broadinstitute.slack.com/archives/C018JAW5YF9).
+
+## Technology used
+
+We currently use JavaScript and the React + ReactDOM framework, coupled with [D3](https://d3js.org/). For backend (for which there isn't much support yet), we use [FastAPI](https://fastapi.tiangolo.com/).
+
+
+
+
