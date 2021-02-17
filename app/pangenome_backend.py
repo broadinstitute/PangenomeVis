@@ -57,17 +57,6 @@ class BaseGraphBackend(metaclass=ABCMeta):
         """
 
 
-class HashableNode:
-    def __init__(self, node):
-        self.node = node
-
-    def __hash__(self):
-        return self.node.full_node().__hash__
-
-    def get_node(self):
-        return self.node
-
-
 class PyfrostBackend(BaseGraphBackend):
     def __init__(self, graph_file):
         super().__init__()
@@ -88,9 +77,11 @@ class PyfrostBackend(BaseGraphBackend):
         neighborhood = networkx.DiGraph()
 
         for kmer in kmerize_seq(self.ccdbg.graph['k'], query):
-            node = self.ccdbg.find(kmer)
-            if not node:
+            nodedict = self.ccdbg.find(kmer)
+            if not nodedict:
                 raise ValueError("K-mer does not exist in the graph")
+
+            node = nodedict['head']
 
             if node in neighborhood:
                 # Already added in a previous iteration
@@ -99,21 +90,20 @@ class PyfrostBackend(BaseGraphBackend):
             # print(node)
 
             queue = deque()
-            queue.append((0, HashableNode(node)))
+            queue.append((0, node))
 
             while queue:
-                level, item = queue.popleft()
-                node = item.get_node()
+                level, node = queue.popleft()
 
-                print(level)
-                print(node)
-                print(type(node))
-                print(node.rep())
-                print(node.full_node())
+                # print(level)
+                # print(node)
+                # print(type(node))
+                # print(node.rep())
+                # print(node.full_node())
 
                 # ndata = self.ccdbg.nodes[node]
 
-                neighborhood.add_node(HashableNode(node))
+                neighborhood.add_node(node)
 
                 if level < radius:
                     for succ in self.ccdbg.successors(node):
@@ -123,7 +113,7 @@ class PyfrostBackend(BaseGraphBackend):
                         print("succ")
                         print(succ)
 
-                        queue.append((level+1, HashableNode(succ)))
+                        queue.append((level+1, succ))
 
                     for pred in self.ccdbg.predecessors(node):
                         if pred in neighborhood:
@@ -132,7 +122,7 @@ class PyfrostBackend(BaseGraphBackend):
                         print("pred")
                         print(pred)
 
-                        queue.append((level+1, HashableNode(pred)))
+                        queue.append((level+1, pred))
 
         # Add edges in the subgraph
         neighborhood.add_edges_from(self.ccdbg.out_edges(nbunch=list(neighborhood.nodes)))

@@ -8,7 +8,7 @@ import igv from 'igv'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
 
-// import graph from './MT.json'
+//import graph from './MT.json'
 function IGV() {
   useEffect(() => {
     igv.createBrowser(ref.current, { genome: 'hg38', locus: 'BRCA1' })
@@ -106,8 +106,9 @@ function App() {
 
   useEffect(() => {
       const fetchData = async () => {
+          // 'https://cors-anywhere.herokuapp.com/http://www.migraph.org/graph'
           const result = await fetch(
-              'https://cors-anywhere.herokuapp.com/http://www.migraph.org/graph'
+            'https://secret-ocean-49799.herokuapp.com/http://www.migraph.org/graph'
           );
 
           if (!result.ok) {
@@ -132,7 +133,7 @@ function App() {
       <OpenDialog show={show} onHide={() => setShow(false)} />
       <div className="flexcontainer">
         <div id="sidebar" className="sidebar">
-          {/*<GraphContainer graph={graph} />*/}
+          {<GraphContainer graph={graph} />}
         </div>
         <div className="body">
           <IGV />
